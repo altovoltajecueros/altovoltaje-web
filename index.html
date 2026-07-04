@@ -1,16 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Altovoltaje Cueros</title>
-      </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altovoltaje Bespoke Leatherwear</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050505;
+      --panel: #121212;
+      --text: #f6efe8;
+      --muted: #bfa792;
+      --accent: #7a2f1d;
+      --accent-strong: #a95b31;
+      --border: rgba(255, 255, 255, 0.12);
+    }
 
-      <body>
+    * { box-sizing: border-box; }
 
-      <h1>Altovoltaje Cueros</h1>
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(169, 91, 49, 0.2), transparent 30%),
+        linear-gradient(135deg, var(--bg), #0d0d0d 60%, #090909);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-      <p>La nueva web está en construcción.</p>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
 
-      </body>
-      </html>
+    .page {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 24px 56px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0 24px;
+    }
+
+    .brand {
+      font-size: 1rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-strong);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+      padding: 40px 0 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 0 24px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(122, 47, 29, 0.35);
+    }
+
+    .hero-card {
+      background: rgba(18, 18, 18, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .features {
+      padding-top: 8px;
+    }
+
+    .features h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      min-height: 180px;
+    }
+
+    .feature-card h4 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      color: var(--accent-strong);
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page { padding: 16px 16px 40px; }
+      .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+      nav { gap: 12px; }
+      .hero { padding-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">Altovoltaje</div>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#amedida">A Medida</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div>
+          <h1>Altovoltaje Bespoke Leatherwear</h1>
+          <p>Prendas de cuero y gamuza confeccionadas 100% a medida.</p>
+          <a class="cta" href="#catalogo">Ver Colección</a>
+        </div>
+        <aside class="hero-card">
+          <h2>Artesanía exclusiva</h2>
+          <p>Materiales selectos, acabados refinados y un diseño que se adapta a tu estilo, tu forma y tu identidad.</p>
+        </aside>
+      </section>
+
+      <section class="features" id="catalogo">
+        <h3>Características</h3>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h4>Cuero genuino</h4>
+            <p>Selección de pieles de alta calidad con textura, resistencia y carácter.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Hecho a medida</h4>
+            <p>Diseños personalizados que se ajustan a tus medidas y preferencias.</p>
+          </article>
+          <article class="feature-card">
+            <h4>Envíos internacionales</h4>
+            <p>Entrega cuidada en distintos destinos para que tu pieza llegue con la misma distinción.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
