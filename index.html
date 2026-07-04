@@ -8,22 +8,28 @@
     :root {
       color-scheme: dark;
       --bg: #050505;
-      --panel: #121212;
-      --text: #f6efe8;
-      --muted: #bfa792;
-      --accent: #7a2f1d;
-      --accent-strong: #a95b31;
-      --border: rgba(255, 255, 255, 0.12);
+      --bg-soft: #17110d;
+      --text: #f7efe6;
+      --ivory: #f3e5ce;
+      --muted: #b7a28c;
+      --chocolate: #7b2f1d;
+      --chocolate-strong: #a85835;
+      --gold: #c7a56a;
+      --border: rgba(255, 240, 220, 0.14);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(169, 91, 49, 0.2), transparent 30%),
-        linear-gradient(135deg, var(--bg), #0d0d0d 60%, #090909);
+        radial-gradient(circle at top left, rgba(168, 88, 53, 0.25), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(199, 165, 106, 0.15), transparent 24%),
+        linear-gradient(125deg, #060606 0%, #12100e 45%, #090707 100%);
       color: var(--text);
       min-height: 100vh;
     }
@@ -32,9 +38,9 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 24px 24px;
-      opacity: 0.25;
+      opacity: 0.2;
       pointer-events: none;
     }
 
@@ -42,21 +48,22 @@
       position: relative;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 24px 24px 56px;
+      padding: 24px 24px 120px;
     }
 
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0 24px;
+      padding: 8px 0 28px;
     }
 
     .brand {
-      font-size: 1rem;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ivory);
+      font-size: 0.92rem;
+      font-weight: 600;
     }
 
     nav {
@@ -73,117 +80,231 @@
     }
 
     nav a:hover {
-      color: var(--accent-strong);
+      color: var(--gold);
     }
 
     .hero {
+      position: relative;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 32px;
       align-items: center;
-      padding: 40px 0 60px;
+      padding: 42px 0 70px;
     }
 
-    .hero h1 {
-      font-size: clamp(2.3rem, 4vw, 4.2rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+    .hero-copy h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 0.98;
+      margin: 0 0 18px;
       letter-spacing: 0.02em;
+      color: var(--ivory);
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      line-height: 1.7;
+    .hero-copy .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid rgba(199, 165, 106, 0.3);
+      border-radius: 999px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.72rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy p {
+      font-size: 1.08rem;
+      line-height: 1.8;
       color: var(--muted);
       max-width: 640px;
       margin: 0 0 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .cta {
       display: inline-block;
       padding: 12px 24px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
       color: white;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 10px 30px rgba(122, 47, 29, 0.35);
+      box-shadow: 0 14px 38px rgba(123, 47, 29, 0.32);
     }
 
     .hero-card {
-      background: rgba(18, 18, 18, 0.92);
+      background: linear-gradient(145deg, rgba(20, 16, 13, 0.95), rgba(12, 10, 9, 0.94));
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     }
 
     .hero-card h2 {
-      font-size: 1.1rem;
-      margin: 0 0 12px;
+      font-size: 1.05rem;
+      margin: 0 0 10px;
+      color: var(--gold);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent-strong);
     }
 
     .hero-card p {
       margin: 0;
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--ivory);
+      line-height: 1.72;
     }
 
-    .features {
-      padding-top: 8px;
+    section {
+      margin-top: 36px;
     }
 
-    .features h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--text);
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 12px;
     }
 
-    .feature-grid {
+    .section-heading h3 {
+      margin: 0;
+      color: var(--ivory);
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .section-heading span {
+      color: var(--gold);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+    }
+
+    .collection-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
-    .feature-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      border-radius: 20px;
+    .collection-card {
+      position: relative;
+      min-height: 170px;
       padding: 22px;
-      min-height: 180px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(123, 47, 29, 0.18));
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
-    .feature-card h4 {
+    .collection-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(199, 165, 106, 0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .collection-card h4 {
+      position: relative;
       margin: 0 0 10px;
-      font-size: 1.15rem;
-      color: var(--accent-strong);
+      font-size: 1.08rem;
+      color: var(--ivory);
     }
 
-    .feature-card p {
+    .collection-card p {
+      position: relative;
       margin: 0;
       color: var(--muted);
       line-height: 1.6;
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 800px) {
-      .hero {
+    .custom-made {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(123, 47, 29, 0.12));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .custom-made h3 {
+      margin: 0 0 10px;
+      color: var(--ivory);
+      font-size: 1.3rem;
+    }
+
+    .custom-made p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .details-list li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--ivory);
+      border: 1px solid rgba(199, 165, 106, 0.16);
+    }
+
+    .wa-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #1f9d5a 0%, #2bb673 100%);
+      box-shadow: 0 14px 34px rgba(20, 120, 70, 0.28);
+      font-weight: 600;
+    }
+
+    .wa-btn:hover {
+      filter: brightness(1.05);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .custom-made {
         grid-template-columns: 1fr;
       }
 
-      .feature-grid {
-        grid-template-columns: 1fr;
+      .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 560px) {
-      .page { padding: 16px 16px 40px; }
+    @media (max-width: 600px) {
+      .page { padding: 16px 16px 96px; }
       .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
       nav { gap: 12px; }
       .hero { padding-top: 20px; }
+      .collection-grid { grid-template-columns: 1fr; }
+      .wa-btn { right: 12px; bottom: 12px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -193,7 +314,7 @@
       <div class="brand">Altovoltaje</div>
       <nav>
         <a href="#inicio">Inicio</a>
-        <a href="#catalogo">Catálogo</a>
+        <a href="#colecciones">Colecciones</a>
         <a href="#amedida">A Medida</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -201,35 +322,68 @@
 
     <main id="inicio">
       <section class="hero">
-        <div>
+        <div class="hero-copy">
+          <div class="eyebrow">Bespoke leatherwear</div>
           <h1>Altovoltaje Bespoke Leatherwear</h1>
-          <p>Prendas de cuero y gamuza confeccionadas 100% a medida.</p>
-          <a class="cta" href="#catalogo">Ver Colección</a>
+          <p>Prendas de cuero y gamuza concebidas con una estética de lujo contemporáneo, materiales nobles y un resultado exclusivo.</p>
+          <div class="cta-row">
+            <a class="cta" href="#colecciones">Ver Colección</a>
+          </div>
         </div>
         <aside class="hero-card">
-          <h2>Artesanía exclusiva</h2>
-          <p>Materiales selectos, acabados refinados y un diseño que se adapta a tu estilo, tu forma y tu identidad.</p>
+          <h2>Estilo atemporal</h2>
+          <p>Desde abrigos y chaquetas hasta prendas de corte refinado, cada pieza combina presencia, textura y distinción.</p>
         </aside>
       </section>
 
-      <section class="features" id="catalogo">
-        <h3>Características</h3>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <h4>Cuero genuino</h4>
-            <p>Selección de pieles de alta calidad con textura, resistencia y carácter.</p>
+      <section id="colecciones">
+        <div class="section-heading">
+          <h3>Colecciones</h3>
+          <span>Edition</span>
+        </div>
+        <div class="collection-grid">
+          <article class="collection-card">
+            <h4>Abrigos</h4>
+            <p>Silhouettes estructuradas con presencia y calidez.</p>
           </article>
-          <article class="feature-card">
-            <h4>Hecho a medida</h4>
-            <p>Diseños personalizados que se ajustan a tus medidas y preferencias.</p>
+          <article class="collection-card">
+            <h4>Chaquetas</h4>
+            <p>Diseños de corte preciso para un look sobrio y contundente.</p>
           </article>
-          <article class="feature-card">
-            <h4>Envíos internacionales</h4>
-            <p>Entrega cuidada en distintos destinos para que tu pieza llegue con la misma distinción.</p>
+          <article class="collection-card">
+            <h4>Pantalones</h4>
+            <p>Comodidad y tensión elegante en cada detalle.</p>
+          </article>
+          <article class="collection-card">
+            <h4>Faldas</h4>
+            <p>Lineas fluidas, materiales selectos y detalle artesanal.</p>
+          </article>
+          <article class="collection-card">
+            <h4>Vestidos</h4>
+            <p>Formas refinadas que unen sofisticación y movimiento.</p>
+          </article>
+          <article class="collection-card">
+            <h4>Tops</h4>
+            <p>Prendas esenciales con textura, volumen y carácter.</p>
           </article>
         </div>
       </section>
+
+      <section class="custom-made" id="amedida">
+        <div>
+          <h3>A medida</h3>
+          <p>Cada prenda se confecciona según medidas reales, cuidando la proporción, el confort y la identidad de quien la lleva. El resultado es una pieza única, pensada para destacar con discreción y distinción.</p>
+        </div>
+        <ul class="details-list">
+          <li>Medidas reales y ajuste personalizado</li>
+          <li>Selección de cuero, gamuza y terminaciones</li>
+          <li>Diseño pensado para cada silueta</li>
+          <li>Atención personalizada desde la consulta</li>
+        </ul>
+      </section>
     </main>
   </div>
+
+  <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Consultas por WhatsApp</a>
 </body>
 </html>
