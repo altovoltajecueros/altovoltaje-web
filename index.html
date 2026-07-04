@@ -26,9 +26,7 @@
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(162, 80, 47, 0.22), transparent 28%),
-        linear-gradient(125deg, #060606 0%, #120f0d 45%, #090707 100%);
+      background: linear-gradient(125deg, #060606 0%, #120f0d 45%, #090707 100%);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
@@ -40,14 +38,11 @@
       inset: 0;
       background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 24px 24px;
-      opacity: 0.16;
+      opacity: 0.14;
       pointer-events: none;
     }
 
-    .page {
-      position: relative;
-      overflow: hidden;
-    }
+    .page { position: relative; overflow: hidden; }
 
     .topbar {
       position: sticky;
@@ -57,7 +52,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 18px 28px;
-      background: rgba(5, 5, 5, 0.72);
+      background: rgba(5, 5, 5, 0.74);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -72,45 +67,36 @@
     }
 
     nav { display: flex; gap: 18px; flex-wrap: wrap; }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-    }
+    nav a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
     nav a:hover { color: var(--gold); }
 
-    .hero-shell {
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 0 28px 44px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.6) 100%),
-        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80") center/cover;
-      position: relative;
+    .hero {
+      min-height: 72vh;
+      padding: 72px 28px 54px;
+      display: grid;
+      align-items: end;
+      background: radial-gradient(circle at top left, rgba(162,80,47,0.24), transparent 28%), rgba(6,6,6,0.92);
     }
 
     .hero-content {
       width: min(1200px, 100%);
       margin: 0 auto;
-      padding: 56px 0 24px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 24px;
       align-items: end;
     }
 
-    .hero-copy h1 {
+    .hero h1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.8rem, 5vw, 4.8rem);
-      line-height: 0.95;
-      margin: 0 0 18px;
+      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      line-height: 0.96;
       color: var(--ivory);
+      margin: 0 0 16px;
       letter-spacing: 0.02em;
     }
 
-    .hero-copy .eyebrow {
+    .hero .eyebrow {
       display: inline-block;
       padding: 6px 12px;
       border: 1px solid rgba(200,169,109,0.34);
@@ -118,42 +104,11 @@
       color: var(--gold);
       text-transform: uppercase;
       letter-spacing: 0.24em;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       margin-bottom: 18px;
     }
 
-    .hero-copy p {
-      max-width: 660px;
-      font-size: 1.06rem;
-      line-height: 1.8;
-      color: #e6d8c6;
-      margin: 0 0 24px;
-    }
-
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .cta {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .cta.primary {
-      background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
-      color: white;
-      box-shadow: 0 14px 38px rgba(111,42,23,0.32);
-    }
-
-    .cta.secondary {
-      background: rgba(255,255,255,0.08);
-      color: var(--ivory);
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-
-    .cta:hover { transform: translateY(-2px); }
+    .hero p { max-width: 620px; font-size: 1.04rem; line-height: 1.8; color: #e6d8c6; margin: 0 0 24px; }
 
     .hero-panel {
       padding: 24px;
@@ -164,23 +119,11 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero-panel h2 {
-      margin: 0 0 10px;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.92rem;
-    }
-
+    .hero-panel h2 { margin: 0 0 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.92rem; }
     .hero-panel p { margin: 0; line-height: 1.7; color: var(--ivory); }
 
-    .wrap {
-      width: min(1200px, calc(100% - 56px));
-      margin: 0 auto;
-      padding: 96px 0 0;
-    }
-
-    .section-block { margin-top: 96px; }
+    .wrap { width: min(1200px, calc(100% - 56px)); margin: 0 auto; padding: 80px 0 0; }
+    .section-block { margin-top: 88px; }
 
     .section-heading {
       display: flex;
@@ -194,7 +137,7 @@
       margin: 0;
       color: var(--ivory);
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.5rem;
+      font-size: 1.38rem;
       letter-spacing: 0.04em;
     }
 
@@ -205,89 +148,120 @@
       letter-spacing: 0.24em;
     }
 
-    .collection-grid {
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .filter-btn {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      border-color: rgba(200,169,109,0.36);
+      color: var(--gold);
+      background: rgba(111,42,23,0.16);
+    }
+
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
-    .collection-card {
-      min-height: 200px;
-      padding: 24px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111,42,23,0.16));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      transition: transform .3s ease, border-color .3s ease;
-    }
-
-    .collection-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(200,169,109,0.3);
-    }
-
-    .collection-card h4 {
-      margin: 0 0 8px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.2rem;
-      color: var(--ivory);
-    }
-
-    .collection-card p { margin: 0; color: var(--muted); line-height: 1.7; }
-
-    .color-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .color-card {
+    .product-card {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 14px;
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111,42,23,0.12));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      transition: transform .25s ease, border-color .25s ease;
     }
 
-    .swatch {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.24);
-      flex-shrink: 0;
-    }
+    .product-card:hover { transform: translateY(-4px); border-color: rgba(200,169,109,0.3); }
+    .product-card.is-hidden { display: none; }
 
-    .swatch.black { background: #070707; }
-    .swatch.chocolate { background: #6a2b16; }
-    .swatch.cognac { background: #8a4a21; }
-    .swatch.bordeaux { background: #69212f; }
-    .swatch.olive { background: #5f5a28; }
-    .swatch.topo { background: #6b6458; }
-
-    .color-card h4 { margin: 0 0 4px; color: var(--ivory); font-size: 1rem; }
-    .color-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
-
-    .testimonial-grid {
+    .photo-placeholder {
+      min-height: 220px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,0.16);
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(111,42,23,0.16));
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 16px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .testimonial-card {
-      padding: 22px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111,42,23,0.14));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+    .product-meta { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+    .product-meta h4 { margin: 0; font-family: "Cormorant Garamond", serif; font-size: 1.16rem; color: var(--ivory); }
+    .product-meta span { color: var(--gold); font-size: 0.92rem; }
+    .product-card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 0.95rem; }
+
+    .color-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
     }
 
-    .testimonial-card p { margin: 0 0 12px; color: var(--ivory); line-height: 1.75; }
-    .testimonial-card strong { color: var(--gold); }
+    .color-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.82rem;
+    }
 
-    .contact-shell {
+    .color-pill::before {
+      content: "";
+      width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 11px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-align: center;
+    }
+
+    .cta.primary {
+      background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
+      color: white;
+      box-shadow: 0 14px 38px rgba(111,42,23,0.32);
+    }
+
+    .cta.secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--ivory);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .cta:hover { transform: translateY(-2px); }
+
+    .measurements {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 24px;
@@ -298,18 +272,18 @@
       box-shadow: var(--shadow);
     }
 
-    .contact-copy h3 {
+    .measurements-copy h3 {
       margin: 0 0 10px;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.4rem;
+      font-size: 1.36rem;
       color: var(--ivory);
     }
 
-    .contact-copy p { margin: 0; color: var(--muted); line-height: 1.8; }
+    .measurements-copy p { color: var(--muted); line-height: 1.8; margin: 0; }
 
-    .contact-form { display: grid; gap: 12px; }
-    .contact-form input,
-    .contact-form textarea {
+    .measurements-form { display: grid; gap: 12px; }
+    .measurements-form input,
+    .measurements-form textarea {
       width: 100%;
       padding: 12px 14px;
       border-radius: 14px;
@@ -319,9 +293,8 @@
       font: inherit;
     }
 
-    .contact-form textarea { min-height: 110px; resize: vertical; }
-
-    .contact-form button { border: 0; cursor: pointer; }
+    .measurements-form textarea { min-height: 110px; resize: vertical; }
+    .measurements-form button { border: 0; cursor: pointer; }
 
     .footer {
       margin-top: 72px;
@@ -357,16 +330,15 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
-      .hero-content, .contact-shell { grid-template-columns: 1fr; }
-      .collection-grid, .color-gallery, .testimonial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-content, .measurements { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 600px) {
       .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 20px; }
-      .hero-shell { min-height: 90vh; padding: 0 20px 28px; }
-      .hero-content, .wrap { width: min(100%, calc(100% - 40px)); }
-      .wrap { padding-top: 70px; }
-      .collection-grid, .color-gallery, .testimonial-grid { grid-template-columns: 1fr; }
+      .hero { padding: 60px 20px 40px; }
+      .wrap { width: min(100%, calc(100% - 40px)); }
+      .product-grid { grid-template-columns: 1fr; }
       .footer { flex-direction: column; align-items: flex-start; }
       .wa-btn { right: 12px; bottom: 12px; font-size: 0.9rem; }
     }
@@ -377,155 +349,160 @@
     <div class="brand">Altovoltaje</div>
     <nav>
       <a href="#inicio">Inicio</a>
-      <a href="#colecciones">Colecciones</a>
-      <a href="#colores">Colores</a>
-      <a href="#testimonios">Testimonios</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#medidas">Medidas</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <div class="page">
-    <section class="hero-shell reveal" id="inicio">
+    <section class="hero reveal" id="inicio">
       <div class="hero-content">
-        <div class="hero-copy">
+        <div>
           <div class="eyebrow">Bespoke Leatherwear</div>
-          <h1>Altovoltaje Bespoke Leatherwear</h1>
-          <p>Prendas de cuero y gamuza concebidas con una estética editorial, materiales nobles y un resultante de lujo contemporáneo.</p>
-          <div class="hero-actions">
-            <a class="cta primary" href="#colecciones">Explorar colecciones</a>
-            <a class="cta secondary" href="#contacto">Solicitar consulta</a>
-          </div>
+          <h1>Catálogo editorial de Altovoltaje</h1>
+          <p>Una colección de prendas de cuero y gamuza pensadas para quienes buscan distinción, proporción y un lenguaje de lujo contemporáneo.</p>
         </div>
         <aside class="hero-panel">
-          <h2>Alta confección</h2>
-          <p>Desde abrigos y chaquetas hasta vestidos y enteritos, cada pieza se desarrolla con un enfoque preciso, íntimo y exclusivo.</p>
+          <h2>Encargo</h2>
+          <p>Seleccioná la categoría, revisá los modelos y consultanos por WhatsApp para crear una pieza a medida con tus referencias y medidas.</p>
         </aside>
       </div>
     </section>
 
     <main>
-      <section id="colecciones" class="section-block reveal">
+      <section id="catalogo" class="section-block reveal">
         <div class="section-heading">
-          <h3>Colecciones</h3>
-          <span>Edition</span>
+          <h3>Catálogo</h3>
+          <span>Editorial</span>
         </div>
-        <div class="collection-grid">
-          <article class="collection-card">
-            <h4>Abrigos</h4>
-            <p>Silhouettes de presencia y calidez, diseñadas para sostener el look con sutileza.</p>
+
+        <div class="filters" aria-label="Filtros de categoría">
+          <button class="filter-btn active" data-filter="all">Todo</button>
+          <button class="filter-btn" data-filter="abrigos">Abrigos</button>
+          <button class="filter-btn" data-filter="chaquetas">Chaquetas</button>
+          <button class="filter-btn" data-filter="pantalones">Pantalones</button>
+          <button class="filter-btn" data-filter="faldas">Faldas</button>
+          <button class="filter-btn" data-filter="vestidos">Vestidos</button>
+          <button class="filter-btn" data-filter="enteritos">Enteritos</button>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card" data-category="abrigos">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Abrigo de corte largo</h4>
+              <span>Desde $2.800 USD</span>
+            </div>
+            <p>Silhouette estructurada con líneas limpias y un volumen sobrio.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#6a2b16">Chocolate</span>
+              <span class="color-pill" style="color:#8a4a21">Cognac</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Abrigo%20de%20corte%20largo." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
-          <article class="collection-card">
-            <h4>Chaquetas</h4>
-            <p>Volúmenes controlados, texturas refinadas y una línea visual impecable.</p>
+
+          <article class="product-card" data-category="chaquetas">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Chaqueta estructural</h4>
+              <span>Desde $2.200 USD</span>
+            </div>
+            <p>Diseño preciso, hombros marcados y una presencia muy refinada.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#69212f">Burdeos</span>
+              <span class="color-pill" style="color:#6b6458">Topo</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Chaqueta%20estructural." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
-          <article class="collection-card">
-            <h4>Pantalones</h4>
-            <p>Comodidad estructurada con una tensión elegante en cada detalle.</p>
+
+          <article class="product-card" data-category="pantalones">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Pantalón de silueta recta</h4>
+              <span>Desde $1.600 USD</span>
+            </div>
+            <p>Comodidad estructurada con una caída elegante y sin excesos.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#5f5a28">Oliva</span>
+              <span class="color-pill" style="color:#6b6458">Topo</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Pantalón%20de%20silueta%20recta." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
-          <article class="collection-card">
-            <h4>Faldas</h4>
-            <p>Movimiento, proporción y una elegancia discreta orientada a la distinción.</p>
+
+          <article class="product-card" data-category="faldas">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Falda de caída limpia</h4>
+              <span>Desde $1.450 USD</span>
+            </div>
+            <p>Una línea fluida, mínima y muy precisa, pensada para el movimiento.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#6a2b16">Chocolate</span>
+              <span class="color-pill" style="color:#8a4a21">Cognac</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Falda%20de%20caída%20limpia." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
-          <article class="collection-card">
-            <h4>Vestidos</h4>
-            <p>Formas sobrias y líneas limpias que hablan de sofisticación y carácter.</p>
+
+          <article class="product-card" data-category="vestidos">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Vestido de línea recta</h4>
+              <span>Desde $2.600 USD</span>
+            </div>
+            <p>Una propuesta de alto control, volumen contenido y una presencia elegante.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#69212f">Burdeos</span>
+              <span class="color-pill" style="color:#6a2b16">Chocolate</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Vestido%20de%20línea%20recta." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
-          <article class="collection-card">
-            <h4>Enteritos</h4>
-            <p>Prendas esenciales con volumen, textura y un corte muy preciso.</p>
+
+          <article class="product-card" data-category="enteritos">
+            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="product-meta">
+              <h4>Enterito de corte preciso</h4>
+              <span>Desde $1.900 USD</span>
+            </div>
+            <p>Una pieza esencial para el día y la noche, con una construcción muy cuidada.</p>
+            <div class="color-list">
+              <span class="color-pill" style="color:#070707">Negro</span>
+              <span class="color-pill" style="color:#5f5a28">Oliva</span>
+              <span class="color-pill" style="color:#6b6458">Topo</span>
+            </div>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Enterito%20de%20corte%20preciso." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
           </article>
         </div>
       </section>
 
-      <section id="colores" class="section-block reveal">
+      <section id="medidas" class="section-block reveal">
         <div class="section-heading">
-          <h3>Galería de colores</h3>
-          <span>Paleta</span>
+          <h3>Cargar medidas</h3>
+          <span>Encargo</span>
         </div>
-        <div class="color-gallery">
-          <article class="color-card">
-            <div class="swatch black"></div>
-            <div>
-              <h4>Negro</h4>
-              <p>Profundidad, presencia y sobriedad.</p>
-            </div>
-          </article>
-          <article class="color-card">
-            <div class="swatch chocolate"></div>
-            <div>
-              <h4>Chocolate</h4>
-              <p>Calidez de acabado intenso.</p>
-            </div>
-          </article>
-          <article class="color-card">
-            <div class="swatch cognac"></div>
-            <div>
-              <h4>Cognac</h4>
-              <p>Una tonalidad noble y refinada.</p>
-            </div>
-          </article>
-          <article class="color-card">
-            <div class="swatch bordeaux"></div>
-            <div>
-              <h4>Burdeos</h4>
-              <p>Un contraste dramático y sofisticado.</p>
-            </div>
-          </article>
-          <article class="color-card">
-            <div class="swatch olive"></div>
-            <div>
-              <h4>Verde Oliva</h4>
-              <p>Elegancia natural y serena.</p>
-            </div>
-          </article>
-          <article class="color-card">
-            <div class="swatch topo"></div>
-            <div>
-              <h4>Gris Topo</h4>
-              <p>Matiz discreto con carácter.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="testimonios" class="section-block reveal">
-        <div class="section-heading">
-          <h3>Testimonios</h3>
-          <span>Clientela</span>
-        </div>
-        <div class="testimonial-grid">
-          <article class="testimonial-card">
-            <p>“La pieza se sintió hecha para mí desde la primera conversación. La confección, el ajuste y la textura eran impecables.”</p>
-            <strong>— Sofía M.</strong>
-          </article>
-          <article class="testimonial-card">
-            <p>“Cada detalle respira intención. Fue una experiencia muy cercana, muy cuidada y absolutamente exclusiva.”</p>
-            <strong>— Emilia R.</strong>
-          </article>
-          <article class="testimonial-card">
-            <p>“Una pieza que transmite presencia sin necesidad de mostrarlo. El resultado fue de otro nivel.”</p>
-            <strong>— Lena P.</strong>
-          </article>
-        </div>
-      </section>
-
-      <section id="contacto" class="section-block reveal">
-        <div class="contact-shell">
-          <div class="contact-copy">
-            <h3>Consulta privada</h3>
-            <p>Compartí tus referencias, medidas o el tipo de prenda que deseas. Nos pondremos en contacto para diseñar una pieza a medida con la atención que merece.</p>
+        <div class="measurements">
+          <div class="measurements-copy">
+            <h3>Tu prenda, a medida</h3>
+            <p>Compartí tus medidas, referencias y detalles de uso para que podamos preparar un encargo preciso y exclusivo. Si prefieres, también podés dejar un mensaje y te responderemos por WhatsApp.</p>
           </div>
-          <form class="contact-form" id="contact-form">
+          <form class="measurements-form" id="measurements-form">
             <input name="name" type="text" placeholder="Nombre" required />
             <input name="email" type="email" placeholder="Correo" required />
-            <textarea name="message" placeholder="Cuéntanos tu proyecto"></textarea>
-            <button class="cta primary" type="submit">Enviar por WhatsApp</button>
+            <input name="category" type="text" placeholder="Categoría de interés" />
+            <input name="measurements" type="text" placeholder="Medidas (pecho, cintura, cadera, largo)" />
+            <textarea name="notes" placeholder="Referencias, materiales o notas adicionales"></textarea>
+            <button class="cta primary" type="submit">Enviar medidas por WhatsApp</button>
           </form>
         </div>
       </section>
     </main>
 
-    <footer class="footer reveal">
+    <footer id="contacto" class="footer reveal">
       <span>Altovoltaje · Bespoke Leatherwear</span>
       <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Agendar una consulta</a>
     </footer>
@@ -534,14 +511,32 @@
   <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Consultas por WhatsApp</a>
 
   <script>
-    const form = document.getElementById('contact-form');
+    const filters = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
+
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        filters.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+
+        cards.forEach((card) => {
+          const category = card.dataset.category;
+          card.classList.toggle('is-hidden', filter !== 'all' && category !== filter);
+        });
+      });
+    });
+
+    const form = document.getElementById('measurements-form');
     if (form) {
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         const name = form.name.value.trim() || 'Cliente';
         const email = form.email.value.trim();
-        const message = form.message.value.trim() || 'Me gustaría recibir información sobre una prenda a medida.';
-        const text = `Hola Altovoltaje, soy ${name}. ${message} ${email ? `Contacto: ${email}` : ''}`;
+        const category = form.category.value.trim() || 'Catálogo';
+        const measurements = form.measurements.value.trim() || 'Sin medidas detalladas aún';
+        const notes = form.notes.value.trim() || 'Quiero recibir información del encargo.';
+        const text = `Hola Altovoltaje, soy ${name}. Quiero consultar por ${category}. Medidas: ${measurements}. Notas: ${notes}${email ? ` Contacto: ${email}` : ''}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
         form.reset();
       });
