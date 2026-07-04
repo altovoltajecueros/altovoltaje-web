@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Altovoltaje Bespoke Leatherwear</title>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
     :root {
       color-scheme: dark;
       --bg: #050505;
       --bg-soft: #17110d;
-      --text: #f7efe6;
-      --ivory: #f3e5ce;
-      --muted: #b7a28c;
-      --chocolate: #7b2f1d;
-      --chocolate-strong: #a85835;
-      --gold: #c7a56a;
+      --text: #f8efe7;
+      --ivory: #f4e6d0;
+      --muted: #b8a28d;
+      --chocolate: #6f2a17;
+      --chocolate-strong: #a2502f;
+      --gold: #c8a96d;
       --border: rgba(255, 240, 220, 0.14);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
     }
@@ -27,11 +29,12 @@
       margin: 0;
       font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(168, 88, 53, 0.25), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(199, 165, 106, 0.15), transparent 24%),
-        linear-gradient(125deg, #060606 0%, #12100e 45%, #090707 100%);
+        radial-gradient(circle at top left, rgba(162, 80, 47, 0.24), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(200, 169, 109, 0.16), transparent 24%),
+        linear-gradient(125deg, #060606 0%, #120f0d 45%, #090707 100%);
       color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     body::before {
@@ -40,7 +43,7 @@
       inset: 0;
       background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 24px 24px;
-      opacity: 0.2;
+      opacity: 0.18;
       pointer-events: none;
     }
 
@@ -55,14 +58,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0 28px;
+      padding: 8px 0 36px;
     }
 
     .brand {
-      letter-spacing: 0.3em;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--ivory);
-      font-size: 0.92rem;
+      font-size: 1.05rem;
       font-weight: 600;
     }
 
@@ -86,15 +90,16 @@
     .hero {
       position: relative;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 32px;
       align-items: center;
-      padding: 42px 0 70px;
+      padding: 54px 0 90px;
     }
 
     .hero-copy h1 {
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      line-height: 0.98;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      line-height: 0.95;
       margin: 0 0 18px;
       letter-spacing: 0.02em;
       color: var(--ivory);
@@ -103,7 +108,7 @@
     .hero-copy .eyebrow {
       display: inline-block;
       padding: 6px 12px;
-      border: 1px solid rgba(199, 165, 106, 0.3);
+      border: 1px solid rgba(200, 169, 109, 0.3);
       border-radius: 999px;
       color: var(--gold);
       text-transform: uppercase;
@@ -134,7 +139,13 @@
       color: white;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 14px 38px rgba(123, 47, 29, 0.32);
+      box-shadow: 0 14px 38px rgba(111, 42, 23, 0.32);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(111, 42, 23, 0.38);
     }
 
     .hero-card {
@@ -160,22 +171,23 @@
       line-height: 1.72;
     }
 
-    section {
-      margin-top: 36px;
+    .section-block {
+      margin-top: 112px;
     }
 
     .section-heading {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
       gap: 12px;
     }
 
     .section-heading h3 {
       margin: 0;
       color: var(--ivory);
-      font-size: 1.3rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
       letter-spacing: 0.04em;
     }
 
@@ -189,32 +201,39 @@
     .collection-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
     }
 
     .collection-card {
       position: relative;
-      min-height: 170px;
-      padding: 22px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(123, 47, 29, 0.18));
+      min-height: 190px;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111, 42, 23, 0.16));
       border: 1px solid var(--border);
       overflow: hidden;
       box-shadow: var(--shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 169, 109, 0.3);
     }
 
     .collection-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(199, 165, 106, 0.18), transparent 60%);
+      background: linear-gradient(135deg, rgba(200, 169, 109, 0.16), transparent 64%);
       pointer-events: none;
     }
 
     .collection-card h4 {
       position: relative;
       margin: 0 0 10px;
-      font-size: 1.08rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.22rem;
       color: var(--ivory);
     }
 
@@ -222,48 +241,128 @@
       position: relative;
       margin: 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
       font-size: 0.95rem;
     }
 
-    .custom-made {
+    .palette-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 20px;
-      align-items: start;
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(123, 47, 29, 0.12));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .swatch-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
 
-    .custom-made h3 {
-      margin: 0 0 10px;
-      color: var(--ivory);
-      font-size: 1.3rem;
+    .swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.28);
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.3);
     }
 
-    .custom-made p {
+    .swatch.black { background: #070707; }
+    .swatch.chocolate { background: #6a2b16; }
+    .swatch.cognac { background: #8a4a21; }
+    .swatch.bordeaux { background: #69212f; }
+    .swatch.olive { background: #5f5a28; }
+    .swatch.topo { background: #6b6458; }
+
+    .swatch-card h4 {
+      margin: 0 0 4px;
+      color: var(--ivory);
+      font-size: 1rem;
+    }
+
+    .swatch-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.8;
+      font-size: 0.92rem;
     }
 
-    .details-list {
+    .custom-made {
       display: grid;
-      gap: 10px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 24px;
+      align-items: start;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(111, 42, 23, 0.14));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
-    .details-list li {
-      padding: 12px 14px;
-      border-radius: 14px;
+    .made-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.82;
+      font-size: 1rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      padding: 16px;
+      border-radius: 18px;
       background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200, 169, 109, 0.14);
+    }
+
+    .step-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(200, 169, 109, 0.16);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .step-card h4 {
+      margin: 0 0 6px;
       color: var(--ivory);
-      border: 1px solid rgba(199, 165, 106, 0.16);
+      font-size: 1rem;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+    }
+
+    .footer a {
+      color: var(--ivory);
+      text-decoration: none;
     }
 
     .wa-btn {
@@ -287,13 +386,25 @@
       filter: brightness(1.05);
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 900px) {
       .hero,
       .custom-made {
         grid-template-columns: 1fr;
       }
 
-      .collection-grid {
+      .collection-grid,
+      .palette-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -303,7 +414,13 @@
       .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
       nav { gap: 12px; }
       .hero { padding-top: 20px; }
-      .collection-grid { grid-template-columns: 1fr; }
+      .section-block { margin-top: 84px; }
+      .collection-grid,
+      .palette-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer { flex-direction: column; align-items: flex-start; }
       .wa-btn { right: 12px; bottom: 12px; font-size: 0.9rem; }
     }
   </style>
@@ -315,13 +432,14 @@
       <nav>
         <a href="#inicio">Inicio</a>
         <a href="#colecciones">Colecciones</a>
+        <a href="#colores">Colores</a>
         <a href="#amedida">A Medida</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </header>
 
     <main id="inicio">
-      <section class="hero">
+      <section class="hero reveal">
         <div class="hero-copy">
           <div class="eyebrow">Bespoke leatherwear</div>
           <h1>Altovoltaje Bespoke Leatherwear</h1>
@@ -336,7 +454,7 @@
         </aside>
       </section>
 
-      <section id="colecciones">
+      <section id="colecciones" class="section-block reveal">
         <div class="section-heading">
           <h3>Colecciones</h3>
           <span>Edition</span>
@@ -344,7 +462,7 @@
         <div class="collection-grid">
           <article class="collection-card">
             <h4>Abrigos</h4>
-            <p>Silhouettes estructuradas con presencia y calidez.</p>
+            <p>Silhouettes estructuradas con presencia, calidez y un corte de autor.</p>
           </article>
           <article class="collection-card">
             <h4>Chaquetas</h4>
@@ -352,7 +470,7 @@
           </article>
           <article class="collection-card">
             <h4>Pantalones</h4>
-            <p>Comodidad y tensión elegante en cada detalle.</p>
+            <p>Comodidad y tensión elegante, con un acabado impecable.</p>
           </article>
           <article class="collection-card">
             <h4>Faldas</h4>
@@ -360,30 +478,120 @@
           </article>
           <article class="collection-card">
             <h4>Vestidos</h4>
-            <p>Formas refinadas que unen sofisticación y movimiento.</p>
+            <p>Formas refinadas que unen sofisticación, movimiento y carácter.</p>
           </article>
           <article class="collection-card">
-            <h4>Tops</h4>
-            <p>Prendas esenciales con textura, volumen y carácter.</p>
+            <h4>Enteritos</h4>
+            <p>Prendas esenciales con textura, volumen y un ritmo muy preciso.</p>
           </article>
         </div>
       </section>
 
-      <section class="custom-made" id="amedida">
-        <div>
-          <h3>A medida</h3>
-          <p>Cada prenda se confecciona según medidas reales, cuidando la proporción, el confort y la identidad de quien la lleva. El resultado es una pieza única, pensada para destacar con discreción y distinción.</p>
+      <section id="colores" class="section-block reveal">
+        <div class="section-heading">
+          <h3>Colores disponibles</h3>
+          <span>Paleta</span>
         </div>
-        <ul class="details-list">
-          <li>Medidas reales y ajuste personalizado</li>
-          <li>Selección de cuero, gamuza y terminaciones</li>
-          <li>Diseño pensado para cada silueta</li>
-          <li>Atención personalizada desde la consulta</li>
-        </ul>
+        <div class="palette-grid">
+          <article class="swatch-card">
+            <div class="swatch black"></div>
+            <div>
+              <h4>Negro</h4>
+              <p>Profundidad y presencia.</p>
+            </div>
+          </article>
+          <article class="swatch-card">
+            <div class="swatch chocolate"></div>
+            <div>
+              <h4>Chocolate</h4>
+              <p>Calidez de acabado intenso.</p>
+            </div>
+          </article>
+          <article class="swatch-card">
+            <div class="swatch cognac"></div>
+            <div>
+              <h4>Cognac</h4>
+              <p>Tonalidad noble y sofisticada.</p>
+            </div>
+          </article>
+          <article class="swatch-card">
+            <div class="swatch bordeaux"></div>
+            <div>
+              <h4>Burdeos</h4>
+              <p>Un toque dramático y refinado.</p>
+            </div>
+          </article>
+          <article class="swatch-card">
+            <div class="swatch olive"></div>
+            <div>
+              <h4>Verde Oliva</h4>
+              <p>Elegancia natural y sobria.</p>
+            </div>
+          </article>
+          <article class="swatch-card">
+            <div class="swatch topo"></div>
+            <div>
+              <h4>Gris Topo</h4>
+              <p>Matiz discreto con carácter.</p>
+            </div>
+          </article>
+        </div>
       </section>
+
+      <section class="section-block reveal" id="amedida">
+        <div class="section-heading">
+          <h3>Hecho a medida</h3>
+          <span>Proceso</span>
+        </div>
+        <div class="custom-made">
+          <div class="made-copy">
+            <p>Cada prenda nace a partir de una conversación íntima, un análisis de la silueta y una selección precisa de materiales. El proceso se desarrolla con calma, criterio y atención total a cada detalle para que la pieza resulte única, confortable y absolutamente coherente con su portador.</p>
+          </div>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span>01</span>
+              <h4>Consulta</h4>
+              <p>Definimos estilo, uso y referencias para construir la idea central de la prenda.</p>
+            </article>
+            <article class="step-card">
+              <span>02</span>
+              <h4>Medición</h4>
+              <p>Tomamos medidas reales y evaluamos proporciones para un ajuste preciso.</p>
+            </article>
+            <article class="step-card">
+              <span>03</span>
+              <h4>Diseño</h4>
+              <p>Seleccionamos cuero, gamuza, terminaciones y detalles de confección.</p>
+            </article>
+            <article class="step-card">
+              <span>04</span>
+              <h4>Entrega</h4>
+              <p>La pieza final se ajusta con precisión y se entrega lista para usar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contacto" class="footer reveal">
+        <span>Altovoltaje · Bespoke leatherwear</span>
+        <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Agendar una consulta</a>
+      </footer>
     </main>
   </div>
 
   <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Consultas por WhatsApp</a>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
 </body>
 </html>
