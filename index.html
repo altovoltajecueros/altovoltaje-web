@@ -10,7 +10,6 @@
     :root {
       color-scheme: dark;
       --bg: #050505;
-      --bg-soft: #17110d;
       --text: #f8efe7;
       --ivory: #f4e6d0;
       --muted: #b8a28d;
@@ -22,15 +21,13 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: "Inter", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(162, 80, 47, 0.24), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(200, 169, 109, 0.16), transparent 24%),
+        radial-gradient(circle at top left, rgba(162, 80, 47, 0.22), transparent 28%),
         linear-gradient(125deg, #060606 0%, #120f0d 45%, #090707 100%);
       color: var(--text);
       min-height: 100vh;
@@ -43,22 +40,26 @@
       inset: 0;
       background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 24px 24px;
-      opacity: 0.18;
+      opacity: 0.16;
       pointer-events: none;
     }
 
     .page {
       position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 24px 120px;
+      overflow: hidden;
     }
 
     .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0 36px;
+      padding: 18px 28px;
+      background: rgba(5, 5, 5, 0.72);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .brand {
@@ -66,49 +67,53 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--ivory);
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
     }
 
-    nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
     nav a {
       color: var(--text);
       text-decoration: none;
       font-size: 0.95rem;
       transition: color 0.2s ease;
     }
+    nav a:hover { color: var(--gold); }
 
-    nav a:hover {
-      color: var(--gold);
+    .hero-shell {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 28px 44px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.6) 100%),
+        url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80") center/cover;
+      position: relative;
     }
 
-    .hero {
-      position: relative;
+    .hero-content {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 56px 0 24px;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
-      align-items: center;
-      padding: 54px 0 90px;
+      gap: 24px;
+      align-items: end;
     }
 
     .hero-copy h1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
       line-height: 0.95;
       margin: 0 0 18px;
-      letter-spacing: 0.02em;
       color: var(--ivory);
+      letter-spacing: 0.02em;
     }
 
     .hero-copy .eyebrow {
       display: inline-block;
       padding: 6px 12px;
-      border: 1px solid rgba(200, 169, 109, 0.3);
+      border: 1px solid rgba(200,169,109,0.34);
       border-radius: 999px;
       color: var(--gold);
       text-transform: uppercase;
@@ -118,62 +123,64 @@
     }
 
     .hero-copy p {
-      font-size: 1.08rem;
+      max-width: 660px;
+      font-size: 1.06rem;
       line-height: 1.8;
-      color: var(--muted);
-      max-width: 640px;
+      color: #e6d8c6;
       margin: 0 0 24px;
     }
 
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
     .cta {
       display: inline-block;
       padding: 12px 24px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
-      color: white;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 14px 38px rgba(111, 42, 23, 0.32);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(111, 42, 23, 0.38);
+    .cta.primary {
+      background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
+      color: white;
+      box-shadow: 0 14px 38px rgba(111,42,23,0.32);
     }
 
-    .hero-card {
-      background: linear-gradient(145deg, rgba(20, 16, 13, 0.95), rgba(12, 10, 9, 0.94));
-      border: 1px solid var(--border);
+    .cta.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--ivory);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .cta:hover { transform: translateY(-2px); }
+
+    .hero-panel {
+      padding: 24px;
       border-radius: 24px;
-      padding: 26px;
+      background: rgba(12,10,9,0.78);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
 
-    .hero-card h2 {
-      font-size: 1.05rem;
+    .hero-panel h2 {
       margin: 0 0 10px;
       color: var(--gold);
-      letter-spacing: 0.16em;
       text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.92rem;
     }
 
-    .hero-card p {
-      margin: 0;
-      color: var(--ivory);
-      line-height: 1.72;
+    .hero-panel p { margin: 0; line-height: 1.7; color: var(--ivory); }
+
+    .wrap {
+      width: min(1200px, calc(100% - 56px));
+      margin: 0 auto;
+      padding: 96px 0 0;
     }
 
-    .section-block {
-      margin-top: 112px;
-    }
+    .section-block { margin-top: 96px; }
 
     .section-heading {
       display: flex;
@@ -187,13 +194,13 @@
       margin: 0;
       color: var(--ivory);
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       letter-spacing: 0.04em;
     }
 
     .section-heading span {
       color: var(--gold);
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       text-transform: uppercase;
       letter-spacing: 0.24em;
     }
@@ -205,53 +212,36 @@
     }
 
     .collection-card {
-      position: relative;
-      min-height: 190px;
+      min-height: 200px;
       padding: 24px;
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111, 42, 23, 0.16));
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111,42,23,0.16));
       border: 1px solid var(--border);
-      overflow: hidden;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: transform .3s ease, border-color .3s ease;
     }
 
     .collection-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(200, 169, 109, 0.3);
-    }
-
-    .collection-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(200, 169, 109, 0.16), transparent 64%);
-      pointer-events: none;
+      border-color: rgba(200,169,109,0.3);
     }
 
     .collection-card h4 {
-      position: relative;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.22rem;
+      font-size: 1.2rem;
       color: var(--ivory);
     }
 
-    .collection-card p {
-      position: relative;
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
+    .collection-card p { margin: 0; color: var(--muted); line-height: 1.7; }
 
-    .palette-grid {
+    .color-gallery {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .swatch-card {
+    .color-card {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -266,9 +256,8 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.24);
       flex-shrink: 0;
-      box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.3);
     }
 
     .swatch.black { background: #070707; }
@@ -278,80 +267,65 @@
     .swatch.olive { background: #5f5a28; }
     .swatch.topo { background: #6b6458; }
 
-    .swatch-card h4 {
-      margin: 0 0 4px;
-      color: var(--ivory);
-      font-size: 1rem;
-    }
+    .color-card h4 { margin: 0 0 4px; color: var(--ivory); font-size: 1rem; }
+    .color-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-    .swatch-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .custom-made {
+    .testimonial-grid {
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 24px;
-      align-items: start;
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(111, 42, 23, 0.14));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(111,42,23,0.14));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
 
-    .made-copy p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.82;
-      font-size: 1rem;
-    }
+    .testimonial-card p { margin: 0 0 12px; color: var(--ivory); line-height: 1.75; }
+    .testimonial-card strong { color: var(--gold); }
 
-    .steps-grid {
+    .contact-shell {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(111,42,23,0.14));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
-    .step-card {
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(200, 169, 109, 0.14);
-    }
-
-    .step-card span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(200, 169, 109, 0.16);
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .step-card h4 {
-      margin: 0 0 6px;
+    .contact-copy h3 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
       color: var(--ivory);
-      font-size: 1rem;
     }
 
-    .step-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.92rem;
+    .contact-copy p { margin: 0; color: var(--muted); line-height: 1.8; }
+
+    .contact-form { display: grid; gap: 12px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
     }
+
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+
+    .contact-form button { border: 0; cursor: pointer; }
 
     .footer {
       margin-top: 72px;
-      padding-top: 24px;
+      padding: 24px 0 40px;
       border-top: 1px solid rgba(255,255,255,0.12);
       display: flex;
       justify-content: space-between;
@@ -360,10 +334,7 @@
       color: var(--muted);
     }
 
-    .footer a {
-      color: var(--ivory);
-      text-decoration: none;
-    }
+    .footer a { color: var(--ivory); text-decoration: none; }
 
     .wa-btn {
       position: fixed;
@@ -378,82 +349,61 @@
       text-decoration: none;
       color: #fff;
       background: linear-gradient(135deg, #1f9d5a 0%, #2bb673 100%);
-      box-shadow: 0 14px 34px rgba(20, 120, 70, 0.28);
+      box-shadow: 0 14px 34px rgba(20,120,70,0.28);
       font-weight: 600;
     }
 
-    .wa-btn:hover {
-      filter: brightness(1.05);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
-      .hero,
-      .custom-made {
-        grid-template-columns: 1fr;
-      }
-
-      .collection-grid,
-      .palette-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .hero-content, .contact-shell { grid-template-columns: 1fr; }
+      .collection-grid, .color-gallery, .testimonial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 600px) {
-      .page { padding: 16px 16px 96px; }
-      .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
-      nav { gap: 12px; }
-      .hero { padding-top: 20px; }
-      .section-block { margin-top: 84px; }
-      .collection-grid,
-      .palette-grid,
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
+      .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 20px; }
+      .hero-shell { min-height: 90vh; padding: 0 20px 28px; }
+      .hero-content, .wrap { width: min(100%, calc(100% - 40px)); }
+      .wrap { padding-top: 70px; }
+      .collection-grid, .color-gallery, .testimonial-grid { grid-template-columns: 1fr; }
       .footer { flex-direction: column; align-items: flex-start; }
       .wa-btn { right: 12px; bottom: 12px; font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="topbar">
-      <div class="brand">Altovoltaje</div>
-      <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#colecciones">Colecciones</a>
-        <a href="#colores">Colores</a>
-        <a href="#amedida">A Medida</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </header>
+  <header class="topbar">
+    <div class="brand">Altovoltaje</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#colecciones">Colecciones</a>
+      <a href="#colores">Colores</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-    <main id="inicio">
-      <section class="hero reveal">
+  <div class="page">
+    <section class="hero-shell reveal" id="inicio">
+      <div class="hero-content">
         <div class="hero-copy">
-          <div class="eyebrow">Bespoke leatherwear</div>
+          <div class="eyebrow">Bespoke Leatherwear</div>
           <h1>Altovoltaje Bespoke Leatherwear</h1>
-          <p>Prendas de cuero y gamuza concebidas con una estética de lujo contemporáneo, materiales nobles y un resultado exclusivo.</p>
-          <div class="cta-row">
-            <a class="cta" href="#colecciones">Ver Colección</a>
+          <p>Prendas de cuero y gamuza concebidas con una estética editorial, materiales nobles y un resultante de lujo contemporáneo.</p>
+          <div class="hero-actions">
+            <a class="cta primary" href="#colecciones">Explorar colecciones</a>
+            <a class="cta secondary" href="#contacto">Solicitar consulta</a>
           </div>
         </div>
-        <aside class="hero-card">
-          <h2>Estilo atemporal</h2>
-          <p>Desde abrigos y chaquetas hasta prendas de corte refinado, cada pieza combina presencia, textura y distinción.</p>
+        <aside class="hero-panel">
+          <h2>Alta confección</h2>
+          <p>Desde abrigos y chaquetas hasta vestidos y enteritos, cada pieza se desarrolla con un enfoque preciso, íntimo y exclusivo.</p>
         </aside>
-      </section>
+      </div>
+    </section>
 
+    <main>
       <section id="colecciones" class="section-block reveal">
         <div class="section-heading">
           <h3>Colecciones</h3>
@@ -462,73 +412,73 @@
         <div class="collection-grid">
           <article class="collection-card">
             <h4>Abrigos</h4>
-            <p>Silhouettes estructuradas con presencia, calidez y un corte de autor.</p>
+            <p>Silhouettes de presencia y calidez, diseñadas para sostener el look con sutileza.</p>
           </article>
           <article class="collection-card">
             <h4>Chaquetas</h4>
-            <p>Diseños de corte preciso para un look sobrio y contundente.</p>
+            <p>Volúmenes controlados, texturas refinadas y una línea visual impecable.</p>
           </article>
           <article class="collection-card">
             <h4>Pantalones</h4>
-            <p>Comodidad y tensión elegante, con un acabado impecable.</p>
+            <p>Comodidad estructurada con una tensión elegante en cada detalle.</p>
           </article>
           <article class="collection-card">
             <h4>Faldas</h4>
-            <p>Lineas fluidas, materiales selectos y detalle artesanal.</p>
+            <p>Movimiento, proporción y una elegancia discreta orientada a la distinción.</p>
           </article>
           <article class="collection-card">
             <h4>Vestidos</h4>
-            <p>Formas refinadas que unen sofisticación, movimiento y carácter.</p>
+            <p>Formas sobrias y líneas limpias que hablan de sofisticación y carácter.</p>
           </article>
           <article class="collection-card">
             <h4>Enteritos</h4>
-            <p>Prendas esenciales con textura, volumen y un ritmo muy preciso.</p>
+            <p>Prendas esenciales con volumen, textura y un corte muy preciso.</p>
           </article>
         </div>
       </section>
 
       <section id="colores" class="section-block reveal">
         <div class="section-heading">
-          <h3>Colores disponibles</h3>
+          <h3>Galería de colores</h3>
           <span>Paleta</span>
         </div>
-        <div class="palette-grid">
-          <article class="swatch-card">
+        <div class="color-gallery">
+          <article class="color-card">
             <div class="swatch black"></div>
             <div>
               <h4>Negro</h4>
-              <p>Profundidad y presencia.</p>
+              <p>Profundidad, presencia y sobriedad.</p>
             </div>
           </article>
-          <article class="swatch-card">
+          <article class="color-card">
             <div class="swatch chocolate"></div>
             <div>
               <h4>Chocolate</h4>
               <p>Calidez de acabado intenso.</p>
             </div>
           </article>
-          <article class="swatch-card">
+          <article class="color-card">
             <div class="swatch cognac"></div>
             <div>
               <h4>Cognac</h4>
-              <p>Tonalidad noble y sofisticada.</p>
+              <p>Una tonalidad noble y refinada.</p>
             </div>
           </article>
-          <article class="swatch-card">
+          <article class="color-card">
             <div class="swatch bordeaux"></div>
             <div>
               <h4>Burdeos</h4>
-              <p>Un toque dramático y refinado.</p>
+              <p>Un contraste dramático y sofisticado.</p>
             </div>
           </article>
-          <article class="swatch-card">
+          <article class="color-card">
             <div class="swatch olive"></div>
             <div>
               <h4>Verde Oliva</h4>
-              <p>Elegancia natural y sobria.</p>
+              <p>Elegancia natural y serena.</p>
             </div>
           </article>
-          <article class="swatch-card">
+          <article class="color-card">
             <div class="swatch topo"></div>
             <div>
               <h4>Gris Topo</h4>
@@ -538,50 +488,65 @@
         </div>
       </section>
 
-      <section class="section-block reveal" id="amedida">
+      <section id="testimonios" class="section-block reveal">
         <div class="section-heading">
-          <h3>Hecho a medida</h3>
-          <span>Proceso</span>
+          <h3>Testimonios</h3>
+          <span>Clientela</span>
         </div>
-        <div class="custom-made">
-          <div class="made-copy">
-            <p>Cada prenda nace a partir de una conversación íntima, un análisis de la silueta y una selección precisa de materiales. El proceso se desarrolla con calma, criterio y atención total a cada detalle para que la pieza resulte única, confortable y absolutamente coherente con su portador.</p>
-          </div>
-          <div class="steps-grid">
-            <article class="step-card">
-              <span>01</span>
-              <h4>Consulta</h4>
-              <p>Definimos estilo, uso y referencias para construir la idea central de la prenda.</p>
-            </article>
-            <article class="step-card">
-              <span>02</span>
-              <h4>Medición</h4>
-              <p>Tomamos medidas reales y evaluamos proporciones para un ajuste preciso.</p>
-            </article>
-            <article class="step-card">
-              <span>03</span>
-              <h4>Diseño</h4>
-              <p>Seleccionamos cuero, gamuza, terminaciones y detalles de confección.</p>
-            </article>
-            <article class="step-card">
-              <span>04</span>
-              <h4>Entrega</h4>
-              <p>La pieza final se ajusta con precisión y se entrega lista para usar.</p>
-            </article>
-          </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <p>“La pieza se sintió hecha para mí desde la primera conversación. La confección, el ajuste y la textura eran impecables.”</p>
+            <strong>— Sofía M.</strong>
+          </article>
+          <article class="testimonial-card">
+            <p>“Cada detalle respira intención. Fue una experiencia muy cercana, muy cuidada y absolutamente exclusiva.”</p>
+            <strong>— Emilia R.</strong>
+          </article>
+          <article class="testimonial-card">
+            <p>“Una pieza que transmite presencia sin necesidad de mostrarlo. El resultado fue de otro nivel.”</p>
+            <strong>— Lena P.</strong>
+          </article>
         </div>
       </section>
 
-      <footer id="contacto" class="footer reveal">
-        <span>Altovoltaje · Bespoke leatherwear</span>
-        <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Agendar una consulta</a>
-      </footer>
+      <section id="contacto" class="section-block reveal">
+        <div class="contact-shell">
+          <div class="contact-copy">
+            <h3>Consulta privada</h3>
+            <p>Compartí tus referencias, medidas o el tipo de prenda que deseas. Nos pondremos en contacto para diseñar una pieza a medida con la atención que merece.</p>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <input name="name" type="text" placeholder="Nombre" required />
+            <input name="email" type="email" placeholder="Correo" required />
+            <textarea name="message" placeholder="Cuéntanos tu proyecto"></textarea>
+            <button class="cta primary" type="submit">Enviar por WhatsApp</button>
+          </form>
+        </div>
+      </section>
     </main>
+
+    <footer class="footer reveal">
+      <span>Altovoltaje · Bespoke Leatherwear</span>
+      <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Agendar una consulta</a>
+    </footer>
   </div>
 
   <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Consultas por WhatsApp</a>
 
   <script>
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = form.name.value.trim() || 'Cliente';
+        const email = form.email.value.trim();
+        const message = form.message.value.trim() || 'Me gustaría recibir información sobre una prenda a medida.';
+        const text = `Hola Altovoltaje, soy ${name}. ${message} ${email ? `Contacto: ${email}` : ''}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+        form.reset();
+      });
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
