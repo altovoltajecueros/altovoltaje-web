@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Altovoltaje Bespoke Leatherwear</title>
+  <title>Altovoltaje | Plataforma Premium</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
@@ -18,6 +18,9 @@
       --gold: #c8a96d;
       --border: rgba(255, 240, 220, 0.14);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      --preview-color: #1d1917;
+      --preview-material: rgba(255,255,255,0.14);
+      --preview-hardware: #c8a96d;
     }
 
     * { box-sizing: border-box; }
@@ -38,7 +41,7 @@
       inset: 0;
       background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 24px 24px;
-      opacity: 0.14;
+      opacity: 0.12;
       pointer-events: none;
     }
 
@@ -55,6 +58,7 @@
       background: rgba(5, 5, 5, 0.74);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: 16px;
     }
 
     .brand {
@@ -70,8 +74,18 @@
     nav a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
     nav a:hover { color: var(--gold); }
 
+    .topbar-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    select {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font: inherit;
+    }
+
     .hero {
-      min-height: 72vh;
+      min-height: 78vh;
       padding: 72px 28px 54px;
       display: grid;
       align-items: end;
@@ -79,17 +93,17 @@
     }
 
     .hero-content {
-      width: min(1200px, 100%);
+      width: min(1240px, 100%);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.12fr 0.88fr;
       gap: 24px;
       align-items: end;
     }
 
     .hero h1 {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
       line-height: 0.96;
       color: var(--ivory);
       margin: 0 0 16px;
@@ -108,9 +122,11 @@
       margin-bottom: 18px;
     }
 
-    .hero p { max-width: 620px; font-size: 1.04rem; line-height: 1.8; color: #e6d8c6; margin: 0 0 24px; }
+    .hero p { max-width: 650px; font-size: 1.04rem; line-height: 1.8; color: #e6d8c6; margin: 0 0 24px; }
 
-    .hero-panel {
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-panel, .card, .panel {
       padding: 24px;
       border-radius: 24px;
       background: rgba(12,10,9,0.78);
@@ -122,8 +138,8 @@
     .hero-panel h2 { margin: 0 0 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.92rem; }
     .hero-panel p { margin: 0; line-height: 1.7; color: var(--ivory); }
 
-    .wrap { width: min(1200px, calc(100% - 56px)); margin: 0 auto; padding: 80px 0 0; }
-    .section-block { margin-top: 88px; }
+    .wrap { width: min(1240px, calc(100% - 56px)); margin: 0 auto; padding: 84px 0 0; }
+    .section-block { margin-top: 96px; }
 
     .section-heading {
       display: flex;
@@ -137,7 +153,7 @@
       margin: 0;
       color: var(--ivory);
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.38rem;
+      font-size: 1.4rem;
       letter-spacing: 0.04em;
     }
 
@@ -155,7 +171,7 @@
       margin-bottom: 22px;
     }
 
-    .filter-btn {
+    .filter-btn, .chip-btn {
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.04);
       color: var(--text);
@@ -166,7 +182,7 @@
       transition: all 0.2s ease;
     }
 
-    .filter-btn.active, .filter-btn:hover {
+    .filter-btn.active, .filter-btn:hover, .chip-btn:hover {
       border-color: rgba(200,169,109,0.36);
       color: var(--gold);
       background: rgba(111,42,23,0.16);
@@ -212,14 +228,7 @@
     .product-meta h4 { margin: 0; font-family: "Cormorant Garamond", serif; font-size: 1.16rem; color: var(--ivory); }
     .product-meta span { color: var(--gold); font-size: 0.92rem; }
     .product-card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 0.95rem; }
-
-    .color-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 2px;
-    }
-
+    .color-list { display: flex; flex-wrap: wrap; gap: 8px; }
     .color-pill {
       display: inline-flex;
       align-items: center;
@@ -231,11 +240,136 @@
       color: var(--text);
       font-size: 0.82rem;
     }
-
     .color-pill::before {
       content: "";
       width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
     }
+
+    .configurator {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .configurator-form { display: grid; gap: 12px; }
+    .configurator-form label { display: grid; gap: 6px; color: var(--ivory); font-size: 0.95rem; }
+    .configurator-form select, .configurator-form input, .configurator-form textarea {
+      padding: 11px 13px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+    }
+
+    .preview-card {
+      display: grid;
+      gap: 16px;
+      min-height: 100%;
+    }
+    .preview-card .surface {
+      min-height: 260px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(111,42,23,0.12));
+      padding: 20px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-card .surface::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,169,109,0.16), transparent 62%);
+      pointer-events: none;
+    }
+    .preview-figure {
+      position: relative;
+      width: 190px;
+      height: 240px;
+      border-radius: 24px;
+      background: var(--preview-color);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), 0 16px 32px rgba(0,0,0,0.26);
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform .28s ease, background .28s ease;
+    }
+    .preview-figure::before, .preview-figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--preview-material);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .preview-figure::before {
+      clip-path: polygon(25% 0, 100% 0, 74% 100%, 8% 100%);
+      transform: translateY(0);
+    }
+    .preview-figure::after {
+      clip-path: polygon(24% 14%, 70% 14%, 54% 100%, 10% 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 70%);
+      opacity: 0.7;
+    }
+    .preview-figure .hardware {
+      position: absolute;
+      inset: auto 30px 20px 30px;
+      height: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .preview-figure .hardware span {
+      width: 16px; height: 16px; border-radius: 50%; background: var(--preview-hardware); border: 1px solid rgba(0,0,0,0.16);
+    }
+    .preview-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.9rem; }
+
+    .assistant-card { display: grid; gap: 16px; }
+    .assistant-card textarea { min-height: 120px; resize: vertical; }
+    .assistant-output { display: grid; gap: 10px; }
+    .recommendation {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--ivory);
+      line-height: 1.6;
+    }
+
+    .measurements-form { display: grid; gap: 12px; }
+    .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .measurements-form input, .measurements-form textarea { width: 100%; padding: 11px 13px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--text); font: inherit; }
+    .measurements-form textarea { min-height: 110px; resize: vertical; }
+    .field-status { font-size: 0.84rem; color: var(--muted); }
+    .field-status.valid { color: #8bd1a8; }
+    .field-status.warn { color: #f1c96d; }
+
+    .tracking-card { display: grid; gap: 16px; }
+    .status-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .status-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .status-item.active { color: var(--gold); border-color: rgba(200,169,109,0.36); }
+    .status-item.done { color: #8bd1a8; }
+    .order-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+    .order-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--chocolate)); transition: width .3s ease; }
 
     .cta {
       display: inline-block;
@@ -245,56 +379,20 @@
       font-weight: 600;
       transition: transform .25s ease, box-shadow .25s ease;
       text-align: center;
+      border: 0;
+      cursor: pointer;
     }
-
     .cta.primary {
       background: linear-gradient(135deg, var(--chocolate) 0%, var(--chocolate-strong) 60%, #c87f4d 100%);
       color: white;
       box-shadow: 0 14px 38px rgba(111,42,23,0.32);
     }
-
     .cta.secondary {
       background: rgba(255,255,255,0.05);
       color: var(--ivory);
       border: 1px solid rgba(255,255,255,0.14);
     }
-
     .cta:hover { transform: translateY(-2px); }
-
-    .measurements {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(111,42,23,0.14));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .measurements-copy h3 {
-      margin: 0 0 10px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.36rem;
-      color: var(--ivory);
-    }
-
-    .measurements-copy p { color: var(--muted); line-height: 1.8; margin: 0; }
-
-    .measurements-form { display: grid; gap: 12px; }
-    .measurements-form input,
-    .measurements-form textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font: inherit;
-    }
-
-    .measurements-form textarea { min-height: 110px; resize: vertical; }
-    .measurements-form button { border: 0; cursor: pointer; }
 
     .footer {
       margin-top: 72px;
@@ -306,7 +404,6 @@
       gap: 16px;
       color: var(--muted);
     }
-
     .footer a { color: var(--ivory); text-decoration: none; }
 
     .wa-btn {
@@ -329,16 +426,19 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 900px) {
-      .hero-content, .measurements { grid-template-columns: 1fr; }
+    @media (max-width: 980px) {
+      .hero-content, .configurator, .measurements { grid-template-columns: 1fr; }
       .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .status-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 600px) {
-      .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 20px; }
-      .hero { padding: 60px 20px 40px; }
+    @media (max-width: 640px) {
+      .topbar { flex-direction: column; align-items: flex-start; padding: 16px 20px; }
+      .hero { padding: 56px 20px 36px; }
       .wrap { width: min(100%, calc(100% - 40px)); }
       .product-grid { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .status-list { grid-template-columns: 1fr; }
       .footer { flex-direction: column; align-items: flex-start; }
       .wa-btn { right: 12px; bottom: 12px; font-size: 0.9rem; }
     }
@@ -348,199 +448,758 @@
   <header class="topbar">
     <div class="brand">Altovoltaje</div>
     <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#medidas">Medidas</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#inicio" data-i18n="nav.home">Inicio</a>
+      <a href="#catalogo" data-i18n="nav.catalog">Catálogo</a>
+      <a href="#configurador" data-i18n="nav.config">Configurador</a>
+      <a href="#medidas" data-i18n="nav.measurements">Medidas</a>
+      <a href="#seguimiento" data-i18n="nav.tracking">Seguimiento</a>
     </nav>
+    <div class="topbar-controls">
+      <select id="languageSelect" aria-label="Idioma">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
+      <select id="countrySelect" aria-label="País">
+        <option value="AR">Argentina</option>
+        <option value="MX">México</option>
+        <option value="ES">España</option>
+        <option value="IT">Italia</option>
+        <option value="FR">Francia</option>
+      </select>
+    </div>
   </header>
 
   <div class="page">
     <section class="hero reveal" id="inicio">
       <div class="hero-content">
         <div>
-          <div class="eyebrow">Bespoke Leatherwear</div>
-          <h1>Catálogo editorial de Altovoltaje</h1>
-          <p>Una colección de prendas de cuero y gamuza pensadas para quienes buscan distinción, proporción y un lenguaje de lujo contemporáneo.</p>
+          <div class="eyebrow" data-i18n="hero.eyebrow">Bespoke Leatherwear</div>
+          <h1 data-i18n="hero.title">La plataforma premium de Altovoltaje</h1>
+          <p data-i18n="hero.text">Diseñamos prendas de cuero y gamuza con un enfoque editorial, artesanal y verdaderamente a medida para una clienta que valora el lujo sin exceso.</p>
+          <div class="hero-actions">
+            <a class="cta primary" href="#catalogo" data-i18n="hero.catalog">Explorar catálogo</a>
+            <a class="cta secondary" href="#configurador" data-i18n="hero.config">Crear mi pieza</a>
+          </div>
         </div>
         <aside class="hero-panel">
-          <h2>Encargo</h2>
-          <p>Seleccioná la categoría, revisá los modelos y consultanos por WhatsApp para crear una pieza a medida con tus referencias y medidas.</p>
+          <h2 data-i18n="hero.panelTitle">Alta confección</h2>
+          <p data-i18n="hero.panelText">Seleccioná la prenda, el color, el material y los herrajes para imaginar tu pieza antes de pedirla.</p>
         </aside>
       </div>
     </section>
 
-    <main>
+    <main class="wrap">
       <section id="catalogo" class="section-block reveal">
         <div class="section-heading">
-          <h3>Catálogo</h3>
-          <span>Editorial</span>
+          <h3 data-i18n="catalog.title">Catálogo premium</h3>
+          <span data-i18n="catalog.subtitle">Editorial</span>
         </div>
-
         <div class="filters" aria-label="Filtros de categoría">
-          <button class="filter-btn active" data-filter="all">Todo</button>
-          <button class="filter-btn" data-filter="abrigos">Abrigos</button>
-          <button class="filter-btn" data-filter="chaquetas">Chaquetas</button>
-          <button class="filter-btn" data-filter="pantalones">Pantalones</button>
-          <button class="filter-btn" data-filter="faldas">Faldas</button>
-          <button class="filter-btn" data-filter="vestidos">Vestidos</button>
-          <button class="filter-btn" data-filter="enteritos">Enteritos</button>
+          <button class="filter-btn active" data-filter="all" data-i18n="catalog.all">Todo</button>
+          <button class="filter-btn" data-filter="abrigos" data-i18n="catalog.abrigos">Abrigos</button>
+          <button class="filter-btn" data-filter="chaquetas" data-i18n="catalog.chaquetas">Chaquetas</button>
+          <button class="filter-btn" data-filter="pantalones" data-i18n="catalog.pantalones">Pantalones</button>
+          <button class="filter-btn" data-filter="faldas" data-i18n="catalog.faldas">Faldas</button>
+          <button class="filter-btn" data-filter="vestidos" data-i18n="catalog.vestidos">Vestidos</button>
+          <button class="filter-btn" data-filter="enteritos" data-i18n="catalog.enteritos">Enteritos</button>
         </div>
 
         <div class="product-grid">
           <article class="product-card" data-category="abrigos">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Abrigo de corte largo</h4>
-              <span>Desde $2.800 USD</span>
+              <h4 data-i18n="catalog.product1.title">Abrigo de corte largo</h4>
+              <span data-i18n="catalog.product1.price">Desde $2.800 USD</span>
             </div>
-            <p>Silhouette estructurada con líneas limpias y un volumen sobrio.</p>
+            <p data-i18n="catalog.product1.desc">Silhouette estructurada con volumen sobrio y una presencia íntima.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#6a2b16">Chocolate</span>
               <span class="color-pill" style="color:#8a4a21">Cognac</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Abrigo%20de%20corte%20largo." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Abrigo%20de%20corte%20largo." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
 
           <article class="product-card" data-category="chaquetas">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Chaqueta estructural</h4>
-              <span>Desde $2.200 USD</span>
+              <h4 data-i18n="catalog.product2.title">Chaqueta estructural</h4>
+              <span data-i18n="catalog.product2.price">Desde $2.200 USD</span>
             </div>
-            <p>Diseño preciso, hombros marcados y una presencia muy refinada.</p>
+            <p data-i18n="catalog.product2.desc">Corte preciso, hombros marcados y una presencia muy refinada.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#69212f">Burdeos</span>
               <span class="color-pill" style="color:#6b6458">Topo</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Chaqueta%20estructural." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Chaqueta%20estructural." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
 
           <article class="product-card" data-category="pantalones">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Pantalón de silueta recta</h4>
-              <span>Desde $1.600 USD</span>
+              <h4 data-i18n="catalog.product3.title">Pantalón de silueta recta</h4>
+              <span data-i18n="catalog.product3.price">Desde $1.600 USD</span>
             </div>
-            <p>Comodidad estructurada con una caída elegante y sin excesos.</p>
+            <p data-i18n="catalog.product3.desc">Comodidad estructurada con una caída elegante y sin excesos.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#5f5a28">Oliva</span>
               <span class="color-pill" style="color:#6b6458">Topo</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Pantalón%20de%20silueta%20recta." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Pantalón%20de%20silueta%20recta." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
 
           <article class="product-card" data-category="faldas">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Falda de caída limpia</h4>
-              <span>Desde $1.450 USD</span>
+              <h4 data-i18n="catalog.product4.title">Falda de caída limpia</h4>
+              <span data-i18n="catalog.product4.price">Desde $1.450 USD</span>
             </div>
-            <p>Una línea fluida, mínima y muy precisa, pensada para el movimiento.</p>
+            <p data-i18n="catalog.product4.desc">Línea fluida, mínima y muy precisa, pensada para el movimiento.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#6a2b16">Chocolate</span>
               <span class="color-pill" style="color:#8a4a21">Cognac</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Falda%20de%20caída%20limpia." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20la%20Falda%20de%20caída%20limpia." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
 
           <article class="product-card" data-category="vestidos">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Vestido de línea recta</h4>
-              <span>Desde $2.600 USD</span>
+              <h4 data-i18n="catalog.product5.title">Vestido de línea recta</h4>
+              <span data-i18n="catalog.product5.price">Desde $2.600 USD</span>
             </div>
-            <p>Una propuesta de alto control, volumen contenido y una presencia elegante.</p>
+            <p data-i18n="catalog.product5.desc">Propuesta de alto control, volumen contenido y presencia elegante.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#69212f">Burdeos</span>
               <span class="color-pill" style="color:#6a2b16">Chocolate</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Vestido%20de%20línea%20recta." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Vestido%20de%20línea%20recta." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
 
           <article class="product-card" data-category="enteritos">
-            <div class="photo-placeholder">Foto por cargar</div>
+            <div class="photo-placeholder" data-i18n="catalog.placeholder">Foto por cargar</div>
             <div class="product-meta">
-              <h4>Enterito de corte preciso</h4>
-              <span>Desde $1.900 USD</span>
+              <h4 data-i18n="catalog.product6.title">Enterito de corte preciso</h4>
+              <span data-i18n="catalog.product6.price">Desde $1.900 USD</span>
             </div>
-            <p>Una pieza esencial para el día y la noche, con una construcción muy cuidada.</p>
+            <p data-i18n="catalog.product6.desc">Pieza esencial para el día y la noche, con una construcción muy cuidada.</p>
             <div class="color-list">
               <span class="color-pill" style="color:#070707">Negro</span>
               <span class="color-pill" style="color:#5f5a28">Oliva</span>
               <span class="color-pill" style="color:#6b6458">Topo</span>
             </div>
-            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Enterito%20de%20corte%20preciso." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20interesa%20el%20Enterito%20de%20corte%20preciso." target="_blank" rel="noopener noreferrer" data-i18n="catalog.whatsapp">Consultar por WhatsApp</a>
           </article>
+        </div>
+      </section>
+
+      <section id="configurador" class="section-block reveal">
+        <div class="section-heading">
+          <h3 data-i18n="config.title">Configurador visual básico</h3>
+          <span data-i18n="config.subtitle">Personalización</span>
+        </div>
+        <div class="configurator">
+          <div class="configurator-form card">
+            <label>
+              <span data-i18n="config.garment">Prenda</span>
+              <select id="garmentSelect">
+                <option value="abrigos" data-i18n="config.garments.abrigos">Abrigo</option>
+                <option value="chaquetas" data-i18n="config.garments.chaquetas">Chaqueta</option>
+                <option value="pantalones" data-i18n="config.garments.pantalones">Pantalón</option>
+                <option value="faldas" data-i18n="config.garments.faldas">Falda</option>
+                <option value="vestidos" data-i18n="config.garments.vestidos">Vestido</option>
+                <option value="enteritos" data-i18n="config.garments.enteritos">Enterito</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="config.color">Color</span>
+              <select id="colorSelect">
+                <option value="#070707" data-i18n="config.colors.black">Negro</option>
+                <option value="#6a2b16" data-i18n="config.colors.chocolate">Chocolate</option>
+                <option value="#8a4a21" data-i18n="config.colors.cognac">Cognac</option>
+                <option value="#69212f" data-i18n="config.colors.bordeaux">Burdeos</option>
+                <option value="#5f5a28" data-i18n="config.colors.olive">Oliva</option>
+                <option value="#6b6458" data-i18n="config.colors.topo">Topo</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="config.material">Material</span>
+              <select id="materialSelect">
+                <option value="cuero" data-i18n="config.materials.leather">Cuero</option>
+                <option value="gamuza" data-i18n="config.materials.suede">Gamuza</option>
+                <option value="napa" data-i18n="config.materials.nappa">Napa</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="config.hardware">Herrajes</span>
+              <select id="hardwareSelect">
+                <option value="#c8a96d" data-i18n="config.hardwareOptions.gold">Dorado sutil</option>
+                <option value="#b08c5c" data-i18n="config.hardwareOptions.brushed">Bronce mate</option>
+                <option value="#e9e4db" data-i18n="config.hardwareOptions.silver">Plata envejecida</option>
+              </select>
+            </label>
+            <a class="cta primary" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20quiero%20consultar%20por%20una%20pieza%20personalizada." target="_blank" rel="noopener noreferrer" data-i18n="config.whatsapp">Consultar por WhatsApp</a>
+          </div>
+
+          <div class="preview-card card">
+            <div class="surface">
+              <div class="preview-figure" id="previewFigure">
+                <div class="hardware"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="preview-meta">
+              <span id="previewGarmentLabel">Abrigo</span>
+              <span id="previewMaterialLabel">Cuero</span>
+            </div>
+            <p data-i18n="config.previewText">Vista previa visual de la prenda con el acabado deseado.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block reveal">
+        <div class="section-heading">
+          <h3 data-i18n="assistant.title">Asistente de estilo</h3>
+          <span data-i18n="assistant.subtitle">Recomendaciones</span>
+        </div>
+        <div class="assistant-card card">
+          <label>
+            <span data-i18n="assistant.label">Qué estás buscando para tu próxima pieza</span>
+            <textarea id="styleInput" placeholder="Ej. busco algo sobrio, para eventos nocturnos y con un corte más estructurado."></textarea>
+          </label>
+          <button class="cta primary" id="styleButton" data-i18n="assistant.button">Recibir recomendaciones</button>
+          <div class="assistant-output" id="assistantOutput"></div>
         </div>
       </section>
 
       <section id="medidas" class="section-block reveal">
         <div class="section-heading">
-          <h3>Cargar medidas</h3>
-          <span>Encargo</span>
+          <h3 data-i18n="measurements.title">Formulario inteligente de medidas</h3>
+          <span data-i18n="measurements.subtitle">Ajuste</span>
         </div>
-        <div class="measurements">
-          <div class="measurements-copy">
-            <h3>Tu prenda, a medida</h3>
-            <p>Compartí tus medidas, referencias y detalles de uso para que podamos preparar un encargo preciso y exclusivo. Si prefieres, también podés dejar un mensaje y te responderemos por WhatsApp.</p>
-          </div>
-          <form class="measurements-form" id="measurements-form">
-            <input name="name" type="text" placeholder="Nombre" required />
-            <input name="email" type="email" placeholder="Correo" required />
-            <input name="category" type="text" placeholder="Categoría de interés" />
-            <input name="measurements" type="text" placeholder="Medidas (pecho, cintura, cadera, largo)" />
-            <textarea name="notes" placeholder="Referencias, materiales o notas adicionales"></textarea>
-            <button class="cta primary" type="submit">Enviar medidas por WhatsApp</button>
+        <div class="panel">
+          <form class="measurements-form" id="measurementsForm">
+            <div class="field-row">
+              <label>
+                <span data-i18n="measurements.chest">Pecho</span>
+                <input type="number" name="chest" min="70" max="140" required />
+                <div class="field-status" data-field="chest"></div>
+              </label>
+              <label>
+                <span data-i18n="measurements.waist">Cintura</span>
+                <input type="number" name="waist" min="50" max="120" required />
+                <div class="field-status" data-field="waist"></div>
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span data-i18n="measurements.hips">Cadera</span>
+                <input type="number" name="hips" min="70" max="140" required />
+                <div class="field-status" data-field="hips"></div>
+              </label>
+              <label>
+                <span data-i18n="measurements.biceps">Bíceps</span>
+                <input type="number" name="biceps" min="20" max="50" required />
+                <div class="field-status" data-field="biceps"></div>
+              </label>
+            </div>
+            <label>
+              <span data-i18n="measurements.height">Altura</span>
+              <input type="number" name="height" min="140" max="210" required />
+              <div class="field-status" data-field="height"></div>
+            </label>
+            <textarea name="notes" placeholder="Notas de ajuste y referencias"></textarea>
+            <button class="cta primary" type="submit" data-i18n="measurements.submit">Enviar medidas por WhatsApp</button>
           </form>
+        </div>
+      </section>
+
+      <section id="seguimiento" class="section-block reveal">
+        <div class="section-heading">
+          <h3 data-i18n="tracking.title">Seguimiento de pedido</h3>
+          <span data-i18n="tracking.subtitle">Pedido</span>
+        </div>
+        <div class="tracking-card card">
+          <label>
+            <span data-i18n="tracking.orderLabel">Número de orden</span>
+            <input id="orderInput" type="text" value="AV-2401" />
+          </label>
+          <div class="order-bar"><span id="orderBar"></span></div>
+          <div class="status-list" id="statusList">
+            <div class="status-item active" data-i18n="tracking.step1">Diseño</div>
+            <div class="status-item" data-i18n="tracking.step2">Patrón</div>
+            <div class="status-item" data-i18n="tracking.step3">Confección</div>
+            <div class="status-item" data-i18n="tracking.step4">Control de calidad</div>
+            <div class="status-item" data-i18n="tracking.step5">Envío</div>
+          </div>
+          <p id="trackingText" data-i18n="tracking.text">Tu pedido está en fase de diseño y preparación de propuesta.</p>
+        </div>
+      </section>
+
+      <section class="section-block reveal">
+        <div class="section-heading">
+          <h3 data-i18n="international.title">Catálogo internacional</h3>
+          <span data-i18n="international.subtitle">Global</span>
+        </div>
+        <div class="panel">
+          <p data-i18n="international.text">El catálogo y las comunicaciones se adaptan a la lengua y al país elegido para una experiencia premium y consistente.</p>
         </div>
       </section>
     </main>
 
     <footer id="contacto" class="footer reveal">
       <span>Altovoltaje · Bespoke Leatherwear</span>
-      <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Agendar una consulta</a>
+      <a href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer" data-i18n="footer.cta">Agendar una consulta</a>
     </footer>
   </div>
 
-  <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer">Consultas por WhatsApp</a>
+  <a class="wa-btn" href="https://wa.me/?text=Hola%20Altovoltaje%2C%20me%20gustar%C3%ADa%20consultar%20una%20prenda%20a%20medida." target="_blank" rel="noopener noreferrer" data-i18n="footer.wa">Consultas por WhatsApp</a>
 
   <script>
+    const translations = {
+      es: {
+        'nav.home': 'Inicio',
+        'nav.catalog': 'Catálogo',
+        'nav.config': 'Configurador',
+        'nav.measurements': 'Medidas',
+        'nav.tracking': 'Seguimiento',
+        'hero.eyebrow': 'Bespoke Leatherwear',
+        'hero.title': 'La plataforma premium de Altovoltaje',
+        'hero.text': 'Diseñamos prendas de cuero y gamuza con un enfoque editorial, artesanal y verdaderamente a medida para una clienta que valora el lujo sin exceso.',
+        'hero.catalog': 'Explorar catálogo',
+        'hero.config': 'Crear mi pieza',
+        'hero.panelTitle': 'Alta confección',
+        'hero.panelText': 'Seleccioná la prenda, el color, el material y los herrajes para imaginar tu pieza antes de pedirla.',
+        'catalog.title': 'Catálogo premium',
+        'catalog.subtitle': 'Editorial',
+        'catalog.all': 'Todo',
+        'catalog.abrigos': 'Abrigos',
+        'catalog.chaquetas': 'Chaquetas',
+        'catalog.pantalones': 'Pantalones',
+        'catalog.faldas': 'Faldas',
+        'catalog.vestidos': 'Vestidos',
+        'catalog.enteritos': 'Enteritos',
+        'catalog.placeholder': 'Foto por cargar',
+        'catalog.whatsapp': 'Consultar por WhatsApp',
+        'catalog.product1.title': 'Abrigo de corte largo',
+        'catalog.product1.price': 'Desde $2.800 USD',
+        'catalog.product1.desc': 'Silhouette estructurada con volumen sobrio y una presencia íntima.',
+        'catalog.product2.title': 'Chaqueta estructural',
+        'catalog.product2.price': 'Desde $2.200 USD',
+        'catalog.product2.desc': 'Corte preciso, hombros marcados y una presencia muy refinada.',
+        'catalog.product3.title': 'Pantalón de silueta recta',
+        'catalog.product3.price': 'Desde $1.600 USD',
+        'catalog.product3.desc': 'Comodidad estructurada con una caída elegante y sin excesos.',
+        'catalog.product4.title': 'Falda de caída limpia',
+        'catalog.product4.price': 'Desde $1.450 USD',
+        'catalog.product4.desc': 'Línea fluida, mínima y muy precisa, pensada para el movimiento.',
+        'catalog.product5.title': 'Vestido de línea recta',
+        'catalog.product5.price': 'Desde $2.600 USD',
+        'catalog.product5.desc': 'Propuesta de alto control, volumen contenido y presencia elegante.',
+        'catalog.product6.title': 'Enterito de corte preciso',
+        'catalog.product6.price': 'Desde $1.900 USD',
+        'catalog.product6.desc': 'Pieza esencial para el día y la noche, con una construcción muy cuidada.',
+        'config.title': 'Configurador visual básico',
+        'config.subtitle': 'Personalización',
+        'config.garment': 'Prenda',
+        'config.garments.abrigos': 'Abrigo',
+        'config.garments.chaquetas': 'Chaqueta',
+        'config.garments.pantalones': 'Pantalón',
+        'config.garments.faldas': 'Falda',
+        'config.garments.vestidos': 'Vestido',
+        'config.garments.enteritos': 'Enterito',
+        'config.color': 'Color',
+        'config.colors.black': 'Negro',
+        'config.colors.chocolate': 'Chocolate',
+        'config.colors.cognac': 'Cognac',
+        'config.colors.bordeaux': 'Burdeos',
+        'config.colors.olive': 'Oliva',
+        'config.colors.topo': 'Topo',
+        'config.material': 'Material',
+        'config.materials.leather': 'Cuero',
+        'config.materials.suede': 'Gamuza',
+        'config.materials.nappa': 'Napa',
+        'config.hardware': 'Herrajes',
+        'config.hardwareOptions.gold': 'Dorado sutil',
+        'config.hardwareOptions.brushed': 'Bronce mate',
+        'config.hardwareOptions.silver': 'Plata envejecida',
+        'config.whatsapp': 'Consultar por WhatsApp',
+        'config.previewText': 'Vista previa visual de la prenda con el acabado deseado.',
+        'assistant.title': 'Asistente de estilo',
+        'assistant.subtitle': 'Recomendaciones',
+        'assistant.label': 'Qué estás buscando para tu próxima pieza',
+        'assistant.button': 'Recibir recomendaciones',
+        'measurements.title': 'Formulario inteligente de medidas',
+        'measurements.subtitle': 'Ajuste',
+        'measurements.chest': 'Pecho',
+        'measurements.waist': 'Cintura',
+        'measurements.hips': 'Cadera',
+        'measurements.biceps': 'Bíceps',
+        'measurements.height': 'Altura',
+        'measurements.submit': 'Enviar medidas por WhatsApp',
+        'tracking.title': 'Seguimiento de pedido',
+        'tracking.subtitle': 'Pedido',
+        'tracking.orderLabel': 'Número de orden',
+        'tracking.step1': 'Diseño',
+        'tracking.step2': 'Patrón',
+        'tracking.step3': 'Confección',
+        'tracking.step4': 'Control de calidad',
+        'tracking.step5': 'Envío',
+        'tracking.text': 'Tu pedido está en fase de diseño y preparación de propuesta.',
+        'international.title': 'Catálogo internacional',
+        'international.subtitle': 'Global',
+        'international.text': 'El catálogo y las comunicaciones se adaptan a la lengua y al país elegido para una experiencia premium y consistente.',
+        'footer.cta': 'Agendar una consulta',
+        'footer.wa': 'Consultas por WhatsApp'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.catalog': 'Catalog',
+        'nav.config': 'Configurator',
+        'nav.measurements': 'Measurements',
+        'nav.tracking': 'Tracking',
+        'hero.eyebrow': 'Bespoke Leatherwear',
+        'hero.title': 'Altovoltaje premium platform',
+        'hero.text': 'We design leather and suede garments with an editorial, artisanal and truly made-to-measure approach for clients who value luxury without excess.',
+        'hero.catalog': 'Explore catalog',
+        'hero.config': 'Create my piece',
+        'hero.panelTitle': 'High tailoring',
+        'hero.panelText': 'Choose the garment, color, material and hardware to preview your piece before ordering it.',
+        'catalog.title': 'Premium catalog',
+        'catalog.subtitle': 'Editorial',
+        'catalog.all': 'All',
+        'catalog.abrigos': 'Coats',
+        'catalog.chaquetas': 'Jackets',
+        'catalog.pantalones': 'Trousers',
+        'catalog.faldas': 'Skirts',
+        'catalog.vestidos': 'Dresses',
+        'catalog.enteritos': 'Jumpsuits',
+        'catalog.placeholder': 'Photo to upload',
+        'catalog.whatsapp': 'Ask via WhatsApp',
+        'catalog.product1.title': 'Long coat',
+        'catalog.product1.price': 'From $2,800 USD',
+        'catalog.product1.desc': 'Structured silhouette with sober volume and an intimate presence.',
+        'catalog.product2.title': 'Structural jacket',
+        'catalog.product2.price': 'From $2,200 USD',
+        'catalog.product2.desc': 'Precise cut, marked shoulders and a highly refined presence.',
+        'catalog.product3.title': 'Straight silhouette trousers',
+        'catalog.product3.price': 'From $1,600 USD',
+        'catalog.product3.desc': 'Structured comfort with elegant drape and no excess.',
+        'catalog.product4.title': 'Clean drape skirt',
+        'catalog.product4.price': 'From $1,450 USD',
+        'catalog.product4.desc': 'Fluid, minimal and precise line designed for movement.',
+        'catalog.product5.title': 'Straight-line dress',
+        'catalog.product5.price': 'From $2,600 USD',
+        'catalog.product5.desc': 'High-control design, contained volume and elegant presence.',
+        'catalog.product6.title': 'Precise-cut jumpsuit',
+        'catalog.product6.price': 'From $1,900 USD',
+        'catalog.product6.desc': 'Essential piece for day and night, with very careful construction.',
+        'config.title': 'Basic visual configurator',
+        'config.subtitle': 'Customization',
+        'config.garment': 'Garment',
+        'config.garments.abrigos': 'Coat',
+        'config.garments.chaquetas': 'Jacket',
+        'config.garments.pantalones': 'Trousers',
+        'config.garments.faldas': 'Skirt',
+        'config.garments.vestidos': 'Dress',
+        'config.garments.enteritos': 'Jumpsuit',
+        'config.color': 'Color',
+        'config.colors.black': 'Black',
+        'config.colors.chocolate': 'Chocolate',
+        'config.colors.cognac': 'Cognac',
+        'config.colors.bordeaux': 'Bordeaux',
+        'config.colors.olive': 'Olive',
+        'config.colors.topo': 'Topo',
+        'config.material': 'Material',
+        'config.materials.leather': 'Leather',
+        'config.materials.suede': 'Suede',
+        'config.materials.nappa': 'Nappa',
+        'config.hardware': 'Hardware',
+        'config.hardwareOptions.gold': 'Subtle gold',
+        'config.hardwareOptions.brushed': 'Brushed bronze',
+        'config.hardwareOptions.silver': 'Aged silver',
+        'config.whatsapp': 'Ask via WhatsApp',
+        'config.previewText': 'Visual preview of the garment with the desired finish.',
+        'assistant.title': 'Style assistant',
+        'assistant.subtitle': 'Recommendations',
+        'assistant.label': 'What are you looking for in your next piece',
+        'assistant.button': 'Receive recommendations',
+        'measurements.title': 'Intelligent measurements form',
+        'measurements.subtitle': 'Fit',
+        'measurements.chest': 'Chest',
+        'measurements.waist': 'Waist',
+        'measurements.hips': 'Hips',
+        'measurements.biceps': 'Biceps',
+        'measurements.height': 'Height',
+        'measurements.submit': 'Send measurements by WhatsApp',
+        'tracking.title': 'Order tracking',
+        'tracking.subtitle': 'Order',
+        'tracking.orderLabel': 'Order number',
+        'tracking.step1': 'Design',
+        'tracking.step2': 'Pattern',
+        'tracking.step3': 'Sewing',
+        'tracking.step4': 'Quality control',
+        'tracking.step5': 'Shipping',
+        'tracking.text': 'Your order is in the design and proposal preparation phase.',
+        'international.title': 'International catalog',
+        'international.subtitle': 'Global',
+        'international.text': 'The catalog and communications adapt to the selected language and country for a premium and consistent experience.',
+        'footer.cta': 'Book a consultation',
+        'footer.wa': 'WhatsApp consultations'
+      },
+      pt: {
+        'nav.home': 'Início',
+        'nav.catalog': 'Catálogo',
+        'nav.config': 'Configurador',
+        'nav.measurements': 'Medidas',
+        'nav.tracking': 'Acompanhamento',
+        'hero.eyebrow': 'Bespoke Leatherwear',
+        'hero.title': 'A plataforma premium da Altovoltaje',
+        'hero.text': 'Criamos peças de couro e camurça com uma abordagem editorial, artesanal e verdadeiramente sob medida para uma cliente que valoriza luxo sem excesso.',
+        'hero.catalog': 'Explorar catálogo',
+        'hero.config': 'Criar minha peça',
+        'hero.panelTitle': 'Alto alfaiataria',
+        'hero.panelText': 'Escolha a peça, a cor, o material e os ferragens para visualizar sua criação antes de pedir.',
+        'catalog.title': 'Catálogo premium',
+        'catalog.subtitle': 'Editorial',
+        'catalog.all': 'Tudo',
+        'catalog.abrigos': 'Casacos',
+        'catalog.chaquetas': 'Jaquetas',
+        'catalog.pantalones': 'Calças',
+        'catalog.faldas': 'Saias',
+        'catalog.vestidos': 'Vestidos',
+        'catalog.enteritos': 'Macacões',
+        'catalog.placeholder': 'Foto para carregar',
+        'catalog.whatsapp': 'Consultar por WhatsApp',
+        'catalog.product1.title': 'Casaco de corte longo',
+        'catalog.product1.price': 'A partir de $2.800 USD',
+        'catalog.product1.desc': 'Silhueta estruturada com volume sóbrio e presença íntima.',
+        'catalog.product2.title': 'Jaqueta estrutural',
+        'catalog.product2.price': 'A partir de $2.200 USD',
+        'catalog.product2.desc': 'Corte preciso, ombros marcados e presença muito refinada.',
+        'catalog.product3.title': 'Calça de silhueta reta',
+        'catalog.product3.price': 'A partir de $1.600 USD',
+        'catalog.product3.desc': 'Confort estruturado com caimento elegante e sem excessos.',
+        'catalog.product4.title': 'Saia de caimento limpo',
+        'catalog.product4.price': 'A partir de $1.450 USD',
+        'catalog.product4.desc': 'Linha fluida, mínima e precisa, pensada para o movimento.',
+        'catalog.product5.title': 'Vestido de linha reta',
+        'catalog.product5.price': 'A partir de $2.600 USD',
+        'catalog.product5.desc': 'Proposta de alto controle, volume contido e presença elegante.',
+        'catalog.product6.title': 'Macacão de corte preciso',
+        'catalog.product6.price': 'A partir de $1.900 USD',
+        'catalog.product6.desc': 'Peça essencial para o dia e para a noite, com uma construção muito cuidadosa.',
+        'config.title': 'Configurador visual básico',
+        'config.subtitle': 'Personalização',
+        'config.garment': 'Peça',
+        'config.garments.abrigos': 'Casaco',
+        'config.garments.chaquetas': 'Jaqueta',
+        'config.garments.pantalones': 'Calça',
+        'config.garments.faldas': 'Saia',
+        'config.garments.vestidos': 'Vestido',
+        'config.garments.enteritos': 'Macacão',
+        'config.color': 'Cor',
+        'config.colors.black': 'Preto',
+        'config.colors.chocolate': 'Chocolate',
+        'config.colors.cognac': 'Cognac',
+        'config.colors.bordeaux': 'Bordeaux',
+        'config.colors.olive': 'Oliva',
+        'config.colors.topo': 'Topo',
+        'config.material': 'Material',
+        'config.materials.leather': 'Couro',
+        'config.materials.suede': 'Camurça',
+        'config.materials.nappa': 'Napa',
+        'config.hardware': 'Ferragens',
+        'config.hardwareOptions.gold': 'Dourado sutil',
+        'config.hardwareOptions.brushed': 'Bronze fosco',
+        'config.hardwareOptions.silver': 'Prata envelhecida',
+        'config.whatsapp': 'Consultar por WhatsApp',
+        'config.previewText': 'Pré-visualização da peça com o acabamento desejado.',
+        'assistant.title': 'Assistente de estilo',
+        'assistant.subtitle': 'Recomendações',
+        'assistant.label': 'O que você está procurando para a sua próxima peça',
+        'assistant.button': 'Receber recomendações',
+        'measurements.title': 'Formulário inteligente de medidas',
+        'measurements.subtitle': 'Ajuste',
+        'measurements.chest': 'Peito',
+        'measurements.waist': 'Cintura',
+        'measurements.hips': 'Quadril',
+        'measurements.biceps': 'Bíceps',
+        'measurements.height': 'Altura',
+        'measurements.submit': 'Enviar medidas por WhatsApp',
+        'tracking.title': 'Acompanhamento do pedido',
+        'tracking.subtitle': 'Pedido',
+        'tracking.orderLabel': 'Número do pedido',
+        'tracking.step1': 'Design',
+        'tracking.step2': 'Padrão',
+        'tracking.step3': 'Confecção',
+        'tracking.step4': 'Controle de qualidade',
+        'tracking.step5': 'Envio',
+        'tracking.text': 'Seu pedido está na fase de design e preparação de proposta.',
+        'international.title': 'Catálogo internacional',
+        'international.subtitle': 'Global',
+        'international.text': 'O catálogo e as comunicações se adaptam ao idioma e ao país selecionados para uma experiência premium e consistente.',
+        'footer.cta': 'Agendar uma consulta',
+        'footer.wa': 'Consultas por WhatsApp'
+      }
+    };
+
+    const languageSelect = document.getElementById('languageSelect');
+    const countrySelect = document.getElementById('countrySelect');
+    const garmentSelect = document.getElementById('garmentSelect');
+    const colorSelect = document.getElementById('colorSelect');
+    const materialSelect = document.getElementById('materialSelect');
+    const hardwareSelect = document.getElementById('hardwareSelect');
+    const previewFigure = document.getElementById('previewFigure');
+    const previewGarmentLabel = document.getElementById('previewGarmentLabel');
+    const previewMaterialLabel = document.getElementById('previewMaterialLabel');
+    const orderInput = document.getElementById('orderInput');
+    const orderBar = document.getElementById('orderBar');
+    const trackingText = document.getElementById('trackingText');
+    const statusItems = Array.from(document.querySelectorAll('.status-item'));
+    const styleButton = document.getElementById('styleButton');
+    const styleInput = document.getElementById('styleInput');
+    const assistantOutput = document.getElementById('assistantOutput');
+    const measurementsForm = document.getElementById('measurementsForm');
+
+    function applyLanguage() {
+      const lang = languageSelect.value;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      document.documentElement.lang = lang;
+      previewGarmentLabel.textContent = garmentSelect.options[garmentSelect.selectedIndex].text;
+      previewMaterialLabel.textContent = materialSelect.options[materialSelect.selectedIndex].text;
+    }
+
+    function updatePreview() {
+      const garment = garmentSelect.value;
+      const color = colorSelect.value;
+      const material = materialSelect.value;
+      const hardware = hardwareSelect.value;
+      previewFigure.style.setProperty('--preview-color', color);
+      previewFigure.style.setProperty('--preview-hardware', hardware);
+      if (material === 'gamuza') {
+        previewFigure.style.setProperty('--preview-material', 'rgba(255,255,255,0.16)');
+      } else if (material === 'napa') {
+        previewFigure.style.setProperty('--preview-material', 'rgba(255,255,255,0.22)');
+      } else {
+        previewFigure.style.setProperty('--preview-material', 'rgba(255,255,255,0.12)');
+      }
+      previewFigure.className = 'preview-figure';
+      previewFigure.classList.add(garment);
+      previewGarmentLabel.textContent = garmentSelect.options[garmentSelect.selectedIndex].text;
+      previewMaterialLabel.textContent = materialSelect.options[materialSelect.selectedIndex].text;
+    }
+
+    const recommendations = {
+      es: [
+        'Una silueta estructurada en cuero negro con herrajes dorados aporta presencia y sobriedad.',
+        'Si buscas algo más fluido, te sugerimos una falda o vestido en gamuza cognac con líneas limpias.',
+        'Para eventos nocturnos, un abrigo largo en burdeos con detalles de bronce mate funciona de forma muy elegante.'
+      ],
+      en: [
+        'A structured silhouette in black leather with gold hardware adds presence and sobriety.',
+        'If you are looking for something more fluid, we suggest a skirt or dress in cognac suede with clean lines.',
+        'For evening events, a long coat in bordeaux with brushed bronze details works beautifully.'
+      ],
+      pt: [
+        'Uma silhueta estruturada em couro preto com ferragens douradas traz presença e sobriedade.',
+        'Se você busca algo mais fluido, sugerimos uma saia ou vestido em camurça cognac com linhas limpas.',
+        'Para eventos noturnos, um casaco longo em bordeaux com detalhes em bronze fosco fica muito elegante.'
+      ]
+    };
+
+    styleButton.addEventListener('click', () => {
+      const lang = languageSelect.value;
+      const text = styleInput.value.trim().toLowerCase();
+      assistantOutput.innerHTML = '';
+      const picks = recommendations[lang].map((item) => `<div class="recommendation">${item}</div>`);
+      if (!text) {
+        picks.unshift(`<div class="recommendation">${lang === 'en' ? 'A refined, discreet piece with a strong line will be ideal.' : lang === 'pt' ? 'Uma peça refinada, discreta e com linha forte será ideal.' : 'Una pieza refinada, discreta y con una línea fuerte será ideal.'}</div>`);
+      }
+      assistantOutput.innerHTML = picks.join('');
+    });
+
+    function validateMeasurement(field, value) {
+      const ranges = {
+        chest: [80, 120],
+        waist: [60, 100],
+        hips: [80, 120],
+        biceps: [22, 40],
+        height: [150, 200]
+      };
+      const [min, max] = ranges[field] || [0, 999];
+      const num = Number(value);
+      const status = document.querySelector(`.field-status[data-field="${field}"]`);
+      if (!value || Number.isNaN(num)) {
+        status.textContent = '';
+        status.className = 'field-status';
+        return;
+      }
+      if (num >= min && num <= max) {
+        status.textContent = '✓ Ajuste dentro del rango';
+        status.className = 'field-status valid';
+      } else {
+        status.textContent = '⚠ Revisar medida para un mejor ajuste';
+        status.className = 'field-status warn';
+      }
+    }
+
+    measurementsForm.querySelectorAll('input[type="number"]').forEach((input) => {
+      input.addEventListener('input', () => validateMeasurement(input.name, input.value));
+    });
+
+    measurementsForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      measurementsForm.querySelectorAll('input[type="number"]').forEach((input) => validateMeasurement(input.name, input.value));
+      const name = measurementsForm.querySelector('input[name="name"]')?.value || 'Cliente';
+      const text = `Hola Altovoltaje, soy ${name}. Quiero enviar mis medidas para un encargo premium.`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    });
+
+    function updateTracking() {
+      const order = orderInput.value.trim().toUpperCase();
+      const progress = order === 'AV-2401' ? 0.2 : order === 'AV-2402' ? 0.6 : 0.85;
+      orderBar.style.width = `${progress * 100}%`;
+      const stepIndex = Math.round(progress * 4);
+      statusItems.forEach((item, index) => {
+        item.className = 'status-item';
+        if (index < stepIndex) item.classList.add('done');
+        if (index === stepIndex) item.classList.add('active');
+      });
+      trackingText.textContent = order === 'AV-2401'
+        ? (languageSelect.value === 'en' ? 'Your order is in the design and proposal preparation phase.' : languageSelect.value === 'pt' ? 'Seu pedido está na fase de design e preparação de proposta.' : 'Tu pedido está en fase de diseño y preparación de propuesta.')
+        : (languageSelect.value === 'en' ? 'Your order is progressing well and is in production.' : languageSelect.value === 'pt' ? 'Seu pedido está avançando bem e já está em produção.' : 'Tu pedido va avanzando bien y ya está en producción.');
+    }
+
+    [languageSelect, countrySelect, garmentSelect, colorSelect, materialSelect, hardwareSelect].forEach((control) => control.addEventListener('change', () => {
+      applyLanguage();
+      updatePreview();
+      updateTracking();
+    }));
+    orderInput.addEventListener('input', updateTracking);
+
     const filters = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.product-card');
-
     filters.forEach((button) => {
       button.addEventListener('click', () => {
         filters.forEach((item) => item.classList.remove('active'));
         button.classList.add('active');
         const filter = button.dataset.filter;
-
         cards.forEach((card) => {
           const category = card.dataset.category;
           card.classList.toggle('is-hidden', filter !== 'all' && category !== filter);
         });
       });
     });
-
-    const form = document.getElementById('measurements-form');
-    if (form) {
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = form.name.value.trim() || 'Cliente';
-        const email = form.email.value.trim();
-        const category = form.category.value.trim() || 'Catálogo';
-        const measurements = form.measurements.value.trim() || 'Sin medidas detalladas aún';
-        const notes = form.notes.value.trim() || 'Quiero recibir información del encargo.';
-        const text = `Hola Altovoltaje, soy ${name}. Quiero consultar por ${category}. Medidas: ${measurements}. Notas: ${notes}${email ? ` Contacto: ${email}` : ''}`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-        form.reset();
-      });
-    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -552,6 +1211,10 @@
     }, { threshold: 0.14 });
 
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+    applyLanguage();
+    updatePreview();
+    updateTracking();
   </script>
 </body>
 </html>
